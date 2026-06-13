@@ -13,7 +13,7 @@ the governing equation to account for real-world imperfections.
 ## Repository structure
 
     data/raw/            one CSV per source, as reported
-    data/processed/      harmonised master dataset
+    data/processed/      master dataset
     data/source_log.csv  provenance record for every source
     notebooks/           data extraction, EDA, modelling
     report/              LaTeX dissertation
