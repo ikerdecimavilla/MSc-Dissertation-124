@@ -78,12 +78,44 @@ Specimens excluded from the master and why:
 
 ## 9. Data extraction notes
 
-> Where are the data tables (table numbers and page)? What units does the paper use for each quantity, and what conversions did you apply on entry (for example E in GPa multiplied by 1000 to MPa, load already in kN so unchanged)? Note anything ambiguous or inconsistent in the tables themselves.
+- **Material properties**: Table 3 (individual coupon tests), Table 4 (weighted average tensile flat properties), Table 5 (weighted average compressive flat properties).
+- **Flexural buckling geometries**: Table 10, which contains the cross-section dimensions, length, area, and measured global imperfection v0.
+- **Flexural Buckling Results:** Table 11, which contains the ultimate load Nu and lateral deflection vu,
+
+Units:
+- standard conventions and units
+
+Ambiguities and inconsistencies in the tables:
+- Table 3, several specimens have missing values for 1% proof stress and secondary hardening exponent (due to the ultimate tensile stress occuring before the specimen reaches 1% proof strain)
+- Omitted failure modes in results
+
 
 ## 10. Judgement calls and flags
 
-> Anything that required interpretation: a derived Le, an inferred failure mode, an inferred stainless family, an unusual n derivation, ambiguous notation. Every item recorded here must also be entered in the judgement_calls field of source_log.csv so the two stay in sync.
+- Failure modes need to be separated into local/global buckling --> apply cross-section slenderness filter
+- Determine which set of material properties to use
 
 ## 11. General notes and useful for later
 
-> Anything beyond the raw data that could matter downstream: post-peak behaviour, imperfection-sensitivity comments, how the authors compared results to code predictions (EN 1993-1-4 and similar), residual stresses, or any observation that could inform the Stage 2 correction factor or the discussion chapter.
+### Code Comparisons & Stage 2 Modifications
+
+* **SEI/ASCE-8 Performance:** The North American design curves generally overpredict column strength, placing them on the unsafe side for most of the slenderness range.
+* **EN 1993-1-4 (EC3) Performance:** The European curve provides a much better fit, though a few experimental points still fall unsafely below the codified line.
+* **Proposed Correction ($\beta$ relevance):** To better approximate true buckling resistance, the authors recommend modifying the EC3 curve by either using a higher imperfection factor ($\alpha = 0.76$) with the current plateau ($\lambda_0 = 0.4$), or keeping the current imperfection factor ($\alpha = 0.49$) but shortening the plateau ($\lambda_0 = 0.2$).
+* **Slenderness Limits:** The EC3 Class 3 cross-section limit is "rather conservative", whereas SEI/ASCE-8 allows for more efficient material exploitation.
+
+### Imperfection & Eccentricity Handling
+
+* **Enforced Threshold:** If a column's measured initial global imperfection ($v_0$) was less than $L/1500$, the authors artificially applied a loading eccentricity.
+* **Combined Effect:** This ensured the combined effect of geometric imperfection plus loading eccentricity always equalled at least $L/1500$. Columns with natural imperfections $\geq L/1500$ were loaded concentrically.
+
+### Post-Peak Behaviour
+
+* **Extended Testing:** Tests were deliberately continued past the ultimate failure load to capture post-peak behaviour.
+* **Captured Curves:** Full load-lateral displacement curves were recorded for all flexural buckling specimens, alongside full load-end shortening curves for the stub columns.
+
+### Material Characteristics & Residual Stresses
+
+* **Corner Strength Enhancement:** Due to the pronounced strain-hardening properties of stainless steel, the cold-worked corner regions exhibit higher strength than the flat faces.
+* **Grade Equivalency:** The buckling performance of ferritic stainless steel largely overlaps with austenitic and duplex grades, although lean duplex achieves higher ultimate stresses due to its higher yield strength.
+* **Residual Stresses:** Stub column lengths were specifically selected to be long enough to retain a "representative pattern" of the parent material's residual stresses and geometric imperfections. The EC3 design approach inherently accounts for these residual stresses through its constant parameters.
