@@ -1,0 +1,2 @@
+specimen_id,source_id,study_id,data_type,material_grade,material_type,E0,sigma_02,n,n_source,sigma_u,sigma_10,n_prime,cross_section_type,b,h,t,L,Le,boundary_condition,w0,N_u,failure_mode
+afshan2013_01,afshan2013
