@@ -1,7 +1,7 @@
 # Master Dataset — Data Dictionary
 
-**Version:** 1.0  
-**Date:** 13/06/2026  
+**Version:** 1.1  
+**Date:** 15/06/2026  
 **Description:** Column definitions for the master dataset of Ramberg–Osgood material column buckling experiments and FEA parametric studies.
 
 ---
