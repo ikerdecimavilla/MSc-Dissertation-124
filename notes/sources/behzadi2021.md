@@ -54,9 +54,9 @@ There are 7 distinct batches --> 1 physical experiment batch and 6 FEA 'virtual'
 Modes are explicitly distinguished between torsional-flexural (TF) and minor-axis flexural (F).
 
 - `n_specimens` (total in paper): 5 experimental + 1,146 FEA = 1,151
-- `n_included` (after filtering): 5 experimental + all FEA rows where Ncr,TF/Ncr,F,v > 1.0
+- `n_included` (after filtering): 5 experimental
 
-**Exclusions and reasons:** Must exclude all FEA rows where Ncr,TF/Ncr,F,v ≤ 1.0 (torsional-flexural buckling), as they violate the pure global flexural buckling project constraint.
+**Exclusions and reasons:** FEA results are not included at this stage
 
 ## 8. FEA details (delete if purely experimental)
 
@@ -84,3 +84,4 @@ No conversions needed other than calculating absolute w0 from the L/δv ratio.
 cr,TF/Ncr,F,v > 1.0 threshold to objectively filter the FEA dataset to pure global flexural buckling
 - **Notation Mapping:** Mapped the paper's minor-axis bow imperfection δv to the master schema's global imperfection w0
 - **Derived Le:** Must actively calculate Le=0.5⋅L based on the fixed-fixed physical test setup.
+- **FEA results**: are not included at this stage - focusing on purely experimental data
