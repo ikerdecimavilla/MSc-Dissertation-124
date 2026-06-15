@@ -1,0 +1,13 @@
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,cross_section_type,b,h,t,r1,r2,L,Le,Le,w0,N_u,failure_mode,buckling_axis
+theofanous2009_01,theofanous2009,theofanous2009_B,experimental,1.4162,lean_duplex,cold_formed,197200,657,4.7,measured,770,2.6,773,SHS,79.5,79.6,3.80,,,1999.0,1999.0,1999.0,0.41,361.9,global_flexural,minor
+theofanous2009_02,theofanous2009,theofanous2009_B,experimental,1.4162,lean_duplex,cold_formed,197200,657,4.7,measured,770,2.6,773,SHS,79.6,79.3,3.72,,,1199.5,1199.5,1199.5,0.10,672.5,global_flexural,minor
+theofanous2009_03,theofanous2009,theofanous2009_C,experimental,1.4162,lean_duplex,cold_formed,206400,711,5.0,measured,845,2.7,839,SHS,60.0,60.0,3.13,,,1999.0,1999.0,1999.0,0.31,162.3,global_flexural,minor
+theofanous2009_04,theofanous2009,theofanous2009_C,experimental,1.4162,lean_duplex,cold_formed,206400,711,5.0,measured,845,2.7,839,SHS,60.0,59.6,3.15,,,1599.0,1599.0,1599.0,0.32,231.7,global_flexural,minor
+theofanous2009_05,theofanous2009,theofanous2009_C,experimental,1.4162,lean_duplex,cold_formed,206400,711,5.0,measured,845,2.7,839,SHS,60.0,60.0,3.13,,,1199.0,1199.0,1199.0,0.26,326.9,global_flexural,minor
+theofanous2009_06,theofanous2009,theofanous2009_C,experimental,1.4162,lean_duplex,cold_formed,206400,711,5.0,measured,845,2.7,839,SHS,60.0,60.0,3.13,,,799.0,799.0,799.0,0.23,445.9,global_flexural,minor
+theofanous2009_07,theofanous2009,theofanous2009_D,experimental,1.4162,lean_duplex,cold_formed,204000,607,4.6,measured,734,2.9,817,RHS,79.2,39.0,3.80,,,1600.0,1600.0,1600.0,0.03,160.4,global_flexural,minor
+theofanous2009_08,theofanous2009,theofanous2009_D,experimental,1.4162,lean_duplex,cold_formed,204000,607,4.6,measured,734,2.9,817,RHS,39.3,79.5,3.95,,,1599.5,1599.5,1599.5,0.25,406.3,global_flexural,major
+theofanous2009_09,theofanous2009,theofanous2009_D,experimental,1.4162,lean_duplex,cold_formed,204000,607,4.6,measured,734,2.9,817,RHS,79.2,40.0,3.80,,,1199.0,1199.0,1199.0,0.15,237.4,global_flexural,minor
+theofanous2009_10,theofanous2009,theofanous2009_D,experimental,1.4162,lean_duplex,cold_formed,204000,607,4.6,measured,734,2.9,817,RHS,39.5,79.6,3.96,,,1199.5,1199.5,1199.5,0.13,497.7,global_flexural,major
+theofanous2009_11,theofanous2009,theofanous2009_D,experimental,1.4162,lean_duplex,cold_formed,204000,607,4.6,measured,734,2.9,817,RHS,79.4,39.5,3.80,,,797.2,797.2,797.2,0.22,366.6,global_flexural,minor
+theofanous2009_12,theofanous2009,theofanous2009_D,experimental,1.4162,lean_duplex,cold_formed,204000,607,4.6,measured,734,2.9,817,RHS,39.5,79.9,3.93,,,799.0,799.0,799.0,0.28,546.2,global_flexural,major
