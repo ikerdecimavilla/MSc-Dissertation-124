@@ -76,7 +76,7 @@ Specimens excluded from the master and why:
 - n_included (after filtering): <=15 *tbc
 
 
-## 9. Data extraction notes
+## 8. Data extraction notes
 
 - **Material properties**: Table 3 (individual coupon tests), Table 4 (weighted average tensile flat properties), Table 5 (weighted average compressive flat properties).
 - **Flexural buckling geometries**: Table 10, which contains the cross-section dimensions, length, area, and measured global imperfection v0.
@@ -90,12 +90,12 @@ Ambiguities and inconsistencies in the tables:
 - Omitted failure modes in results
 
 
-## 10. Judgement calls and flags
+## 9. Judgement calls and flags
 
 - Failure modes need to be separated into local/global buckling --> apply cross-section slenderness filter
 - Determine which set of material properties to use
 
-## 11. General notes and useful for later
+## 10. General notes and useful for later
 
 ### Code Comparisons & Stage 2 Modifications
 
