@@ -63,7 +63,9 @@ Raw cross-section dimensions are stored per specimen. Derived section properties
 | `L` | Mandatory | float | mm | Physical member length as reported by the source. |
 | `boundary_condition` | Mandatory | categorical | — | End condition of the column. Allowed values: `pin-pin`, `fixed-fixed`, `fixed-pin`, `fixed-free`. |
 | `Le` | Optional | float | mm | Effective buckling length. Populate directly where reported by the source. Where not reported, derive from `L` using the standard effective length factor for the given `boundary_condition` (k = 1.0 pin-pin, k = 0.5 fixed-fixed, k = 0.7 fixed-pin, k = 2.0 fixed-free) and document this derivation in `source_log.csv`. |
+| `buckling_axis` | Mandatory | categorical | — | The principal axis about which the member underwent flexural buckling, read from the source's test description. Allowed values: `minor`, `major`. This field selects which second moment of area drives the slenderness.|
 | `w0` | Optional | float | mm | Initial global geometric imperfection amplitude (maximum bow). Notation is highly variable across sources: w0, omega_g, delta_v, delta_mid, e0. Consult the source carefully — distinguish global bow from local imperfection or load eccentricity. Where imperfection is reported as a ratio (e.g. L/1000), convert to mm. |
+
  
 ---
  

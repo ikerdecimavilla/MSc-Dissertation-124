@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Date read (15/06/2026):
+- Date read: 15/06/2026
 
 ## 1. Summary: what was tested
 
