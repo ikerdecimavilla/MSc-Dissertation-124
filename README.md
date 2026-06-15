@@ -14,7 +14,7 @@ The dissertation builds a two-stage, physics-informed machine-learning framework
 
 - **Stage 1 — Direct prediction.** Predict the critical flexural buckling load from material and geometric inputs using ML.
 - **Stage 2 — Physics-informed correction (the core contribution).** Extend the correction
-  factor **β** from a univariate function of slenderness into a *multivariate* function of the physical imperfection drivers where mechanics stay central.
+  factor beta from a univariate function of slenderness into a multivariate function of the physical imperfection drivers where mechanics stay central.
 
 ---
 
@@ -37,7 +37,7 @@ and I am now populating it source by source.
 
 **Next steps**
 
-- Continue ingestion data extraction
+- Continue data extraction
 - Generate reusable python script that will calculate geometric properties (I,A,r,lambda,lambda_bar) for all sources and adds data to master_dataset.csv
 - Write short methodlogy notebook to note down logic, decisions and implement src code
 - Run light exploratory data analysis once a first clean dataset version exists.
