@@ -39,6 +39,7 @@ All material properties are per batch from coupon tests unless otherwise noted. 
 |---|---|---|---|---|
 | `material_grade` | Mandatory | string | — | Stainless steel grade designation as reported by the source, e.g. `1.4301`, `1.4404`, `1.4571`, `1.4462`, `1.4003`. Record the designation exactly as given. |
 | `material_type` | Mandatory | categorical | — | Stainless steel family. Allowed values: `austenitic`, `ferritic`, `duplex`, `lean_duplex`. Infer from grade where the source does not state it explicitly (e.g. 1.4301/1.4404 are austenitic, 1.4462 is duplex, 1.4003 is ferritic) and note the inference in the source log. |
+| `forming_route` | Mandatory | categorical | — | Manufacturing route of the section, recorded as reported by the source. Allowed values: `cold_formed`, `hot_rolled`, `hot_finished`, `press_braked`, `laser_welded`. 
 | `E0` | Mandatory | float | MPa | Initial (elastic) Young's modulus from coupon tests. Convert GPa to MPa if necessary (×1000). |
 | `sigma_02` | Mandatory | float | MPa | 0.2% proof stress from coupon tests. Notation variants in sources: f0.2, sigma_0.2, fy. |
 | `n` | Mandatory | float | — | First-stage Ramberg–Osgood strain hardening exponent (governs response up to sigma_0.2). See `n_source` for provenance flag. |

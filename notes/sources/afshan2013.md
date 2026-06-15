@@ -64,7 +64,7 @@ Both given as absolute values in mm
 
 ## 7. Failure modes and exclusions
 
-Failure modes for flexural buckling columns are grouped loosel. Authors state the failures *"involved overall flexural buckling and combined local and overall buckling"* 
+Failure modes for flexural buckling columns are grouped loosely. Authors state the failures *"involved overall flexural buckling and combined local and overall buckling"* 
 
 Specimens excluded from the master and why:
 
