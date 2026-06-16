@@ -4,7 +4,7 @@ SECTION_CALCS = {}      # dictionary of cross-section types
 
 def register(section_type):
     def deco(fn):
-        SECTION_CALCS[cross_section_type] = fn
+        SECTION_CALCS[section_type] = fn
         return fn
     return deco
 
