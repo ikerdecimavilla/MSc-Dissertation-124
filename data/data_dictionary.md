@@ -64,7 +64,8 @@ Raw cross-section dimensions are stored per specimen. Derived section properties
 | `boundary_condition` | Mandatory | categorical | — | End condition of the column. Allowed values: `pin-pin`, `fixed-fixed`, `fixed-pin`, `fixed-free`. |
 | `Le` | Optional | float | mm | Effective buckling length. Where not reported, derived from `L` using the standard effective length factor for the given `boundary_condition` (k = 1.0 pin-pin, k = 0.5 fixed-fixed, k = 0.7 fixed-pin, k = 2.0 fixed-free).|
 | `buckling_axis` | Mandatory | categorical | — | The principal axis about which the member underwent flexural buckling, read from the source's test description. Allowed values: `minor`, `major`. |
-| `w0` | Optional | float | mm | Initial global geometric imperfection amplitude (maximum bow). Notation changes across sources: w0, omega_g, delta_v, delta_mid, e0. |
+| `w_0` | Optional | float | mm | Initial global geometric imperfection amplitude (maximum bow). Notation changes across sources: w0, omega_g, delta_v, delta_mid, e0. |
+| `w_e` | Optional | float | mm | Artificially applied initial loading eccentricity introduced by researchers during testing to achieve a specific target imperfection (e.g., L/1000). Where researchers tested concentrically or did not actively apply an eccentricity, this is populated as 0.0. |
 
  
 ---
@@ -89,7 +90,7 @@ These columns are derived from the mandatory raw inputs. They are never entered 
 | `I` | Computed | float | mm^4 | See above | Second moment of area about the weak axis. |
 | `r` | Computed | float | mm | sqrt(I / A) | Radius of gyration. |
 | `lambda_bar` | Computed | float | — | (Le / (pi * r)) * sqrt(sigma_0.2 / E0) | Non-dimensional slenderness per Köllner, Gardner & Wadee (2023). |
- 
+ | `w_total` | Computed | float | mm | (w_0 + w_e) | Total effective global imperfection experienced by the column during testing. This is the sum of the natural measured bow and any artificially applied setup eccentricity. This combined metric is strictly required for the Stage 2 ML model to accurately predict the β correction factor based on the actual imperfection state the column experienced. |
 ---
  
 ## General Notes
