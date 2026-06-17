@@ -30,6 +30,9 @@ def add_features(df):
     # 8. Strength Reduction Factor
     out["chi"] = out["N_u"] / out["N_y"]
     
+    # 9. Material factor (for comparison with Eurocode)
+    out["epsilon"] = np.sqrt((235 / out["sigma_02"]) * (out["E0"] / 210000)) #Table 5.2 EN 1993-1-4
+    
     return out
 
 def _section_props(row):
