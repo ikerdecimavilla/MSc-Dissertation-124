@@ -93,8 +93,8 @@ These columns are derived from the mandatory raw inputs. They are never entered 
 | `I_minor` | Computed | float | mm^4 | See section formulae | Second moment of area about the minor principal axis. |
 | `R` | Computed | float | mm | sqrt(I_crit / A) | Radius of gyration about the buckling axis. `I_crit` is `I_major` or `I_minor` selected by `buckling_axis`. |
 | `lambda` | Computed | float | — | Le / R | Standard (dimensional) slenderness ratio. |
-| `N_cr` | Computed | float | N | (pi^2 * E0 * I_crit) / Le^2 | Euler elastic critical buckling load. |
-| `N_y` | Computed | float | N | A * sigma_02 | Squash (yield) load of the gross cross-section. |
+| `N_cr` | Computed | float | kN | (pi^2 * E0 * I_crit) / Le^2 | Euler elastic critical buckling load. |
+| `N_y` | Computed | float | kN | A * sigma_02 | Squash (yield) load of the gross cross-section. |
 | `lambda_bar` | Computed | float | — | sqrt(N_y / N_cr); equivalently (Le / (pi * R)) * sqrt(sigma_02 / E0) | Non-dimensional slenderness per Köllner, Gardner & Wadee (2023). |
 | `chi` | Computed | float | — | N_u / N_y | Experimental strength reduction factor. |
 | `epsilon` | Computed | float | — | sqrt((235 / sigma_02) * (E0 / 210000)) | Material factor per EN 1993-1-4 Table 5.2. |

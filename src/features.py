@@ -18,16 +18,16 @@ def add_features(df):
     # 4. Standard Slenderness (lambda)
     out["lambda"] = out["Le"] / out["R"]
     
-    # 5. Euler Elastic Buckling Load
-    out["N_cr"] = np.pi**2 * out["E0"] * I_crit / out["Le"]**2
-    
-    # 6. Yield Load (using 0.2% proof stress)
-    out["N_y"] = out["A"] * out["sigma_02"]
-    
-    # 7. Non-dimensional Slenderness
+    # 5. Euler Elastic Buckling Load (kN)
+    out["N_cr"] = (np.pi**2 * out["E0"] * I_crit / out["Le"]**2) / 1000
+
+    # 6. Yield Load (kN, using 0.2% proof stress)
+    out["N_y"] = out["A"] * out["sigma_02"] / 1000
+
+    # 7. Non-dimensional Slenderness (ratio — unaffected by the kN scaling)
     out["lambda_bar"] = np.sqrt(out["N_y"] / out["N_cr"])
-    
-    # 8. Strength Reduction Factor
+
+    # 8. Strength Reduction Factor (now kN / kN)
     out["chi"] = out["N_u"] / out["N_y"]
     
     # 9. Material factor (for comparison with Eurocode)

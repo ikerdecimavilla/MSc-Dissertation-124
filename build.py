@@ -5,8 +5,9 @@ from src.classify import classify
 
 # Anchor paths relative to this script's exact location
 BASE_DIR = Path(__file__).parent
-EXTRACTED = BASE_DIR / "data/extracted"
-PROCESSED = BASE_DIR / "data/processed"
+DATA_DIR = BASE_DIR / "data"
+EXTRACTED = DATA_DIR / "extracted"
+PROCESSED = DATA_DIR / "processed"
 
 def build():
     PROCESSED.mkdir(parents=True, exist_ok=True)
