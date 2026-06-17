@@ -103,7 +103,7 @@ def failure_mode(section_class, lambda_bar, lambda_0):
     if pd.isna(section_class) or pd.isna(lambda_bar):
         return "unknown"
     if section_class == 4:                                # local-susceptible
-        return "local" if lambda_bar <= lambda_0 else "local_global_interaction"
+        return "local" if lambda_bar <= lambda_0 else "interactive"
     if lambda_bar <= lambda_0:                            # Class 1-3, stocky
         return "yielding"                                 # cross-section governs
     return "global_flexural"                              # Class 1-3, slender
