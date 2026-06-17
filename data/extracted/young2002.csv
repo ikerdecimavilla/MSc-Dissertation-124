@@ -1,4 +1,4 @@
-specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w0,we,wtotal,N_u,failure_mode
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
 young2002_01,young2002,young2002_A,experimental,304,austenitic,cold_formed,190000,242.0,9.0,measured,,,,CHS,89.0,,2.71,1000.0,fixed-fixed,500.0,-,0.25,0.0,0.25,198.4
 young2002_02,young2002,young2002_A,experimental,304,austenitic,cold_formed,190000,242.0,9.0,measured,,,,CHS,89.2,,2.83,1500.0,fixed-fixed,750.0,-,0.50,0.0,0.50,177.4
 young2002_03,young2002,young2002_A,experimental,304,austenitic,cold_formed,190000,242.0,9.0,measured,,,,CHS,89.0,,2.78,2001.0,fixed-fixed,1000.5,-,0.38,0.0,0.38,165.1
