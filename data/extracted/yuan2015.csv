@@ -1,0 +1,11 @@
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,cross_section_type,b,h,t,t_f,t_w,L,boundary_condition,Le,buckling_axis,w0,we,wtotal,N_u,failure_mode
+yuan2015_01,yuan2015,yuan2015_A,experimental,1.4301,austenitic,welded,188600,312.6,5.8,measured,354.4,,695.7,I,245.5,252.7,6.00,6.00,6.00,2938.0,pin-pin,3278.0,minor,0.28,-1.86,-1.58,842.9,interactive
+yuan2015_02,yuan2015,yuan2015_A,experimental,1.4301,austenitic,welded,188600,312.6,5.8,measured,354.4,,695.7,I,305.0,313.3,6.00,6.00,6.00,3137.1,pin-pin,3477.1,minor,0.39,-0.42,-0.03,990.5,interactive
+yuan2015_03,yuan2015,yuan2015_A,experimental,1.4301,austenitic,welded,188600,312.6,5.8,measured,354.4,,695.7,I,245.5,373.1,6.00,6.00,6.00,2888.5,pin-pin,3228.5,minor,0.60,-1.64,-1.03,893.5,interactive
+yuan2015_04,yuan2015,yuan2015_A,experimental,1.4301,austenitic,welded,188600,312.6,5.8,measured,354.4,,695.7,I,173.5,434.1,6.00,6.00,6.00,2037.4,pin-pin,2377.4,minor,-0.50,-1.76,-2.26,716.9,interactive
+yuan2015_05,yuan2015,yuan2015_A,experimental,1.4301,austenitic,welded,188600,312.6,5.8,measured,354.4,,695.7,I,198.0,494.9,6.00,6.00,6.00,2137.6,pin-pin,2477.6,minor,-0.14,-6.49,-6.63,737.3,interactive
+yuan2015_06,yuan2015,yuan2015_B,experimental,1.4462,duplex,welded,193200,605.6,7.4,measured,665.0,,797.9,I,245.0,253.3,6.00,6.00,6.00,2935.1,pin-pin,3275.1,minor,0.54,-1.14,-0.60,1290.1,interactive
+yuan2015_07,yuan2015,yuan2015_B,experimental,1.4462,duplex,welded,193200,605.6,7.4,measured,665.0,,797.9,I,305.0,313.1,6.00,6.00,6.00,3139.9,pin-pin,3479.9,minor,-0.18,2.46,2.28,1444.6,interactive
+yuan2015_08,yuan2015,yuan2015_B,experimental,1.4462,duplex,welded,193200,605.6,7.4,measured,665.0,,797.9,I,245.0,374.0,6.00,6.00,6.00,2886.9,pin-pin,3226.9,minor,0.19,-0.97,-0.78,1322.3,interactive
+yuan2015_09,yuan2015,yuan2015_B,experimental,1.4462,duplex,welded,193200,605.6,7.4,measured,665.0,,797.9,I,172.9,434.1,6.00,6.00,6.00,2039.3,pin-pin,2379.3,minor,-2.08,-3.98,-6.06,1015.2,interactive
+yuan2015_10,yuan2015,yuan2015_B,experimental,1.4462,duplex,welded,193200,605.6,7.4,measured,665.0,,797.9,I,196.9,493.8,6.00,6.00,6.00,2140.5,pin-pin,2480.5,minor,0.14,-3.95,-3.80,1255.8,interactive
