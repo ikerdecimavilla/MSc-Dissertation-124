@@ -1,0 +1,13 @@
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,cross_section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w0,we,wtotal,N_u,failure_mode
+young2002_01,young2002,young2002_A,experimental,304,austenitic,cold_formed,190000,242.0,9.0,measured,,,,CHS,89.0,,2.71,1000.0,fixed-fixed,500.0,-,0.25,0.0,0.25,198.4
+young2002_02,young2002,young2002_A,experimental,304,austenitic,cold_formed,190000,242.0,9.0,measured,,,,CHS,89.2,,2.83,1500.0,fixed-fixed,750.0,-,0.50,0.0,0.50,177.4
+young2002_03,young2002,young2002_A,experimental,304,austenitic,cold_formed,190000,242.0,9.0,measured,,,,CHS,89.0,,2.78,2001.0,fixed-fixed,1000.5,-,0.38,0.0,0.38,165.1
+young2002_04,young2002,young2002_A,experimental,304,austenitic,cold_formed,190000,242.0,9.0,measured,,,,CHS,88.9,,2.78,2499.0,fixed-fixed,1249.5,-,2.75,0.0,2.75,151.6
+young2002_05,young2002,young2002_A,experimental,304,austenitic,cold_formed,190000,242.0,9.0,measured,,,,CHS,88.9,,2.68,3001.0,fixed-fixed,1500.5,-,0.13,0.0,0.13,133.4
+young2002_06,young2002,young2002_B,experimental,304,austenitic,cold_formed,195000,247.0,7.0,measured,,,,CHS,168.5,,3.31,999.0,fixed-fixed,499.5,-,0.25,0.0,0.25,474.9
+young2002_07,young2002,young2002_B,experimental,304,austenitic,cold_formed,195000,247.0,7.0,measured,,,,CHS,168.8,,3.37,1500.0,fixed-fixed,750.0,-,0.25,0.0,0.25,461.0
+young2002_08,young2002,young2002_B,experimental,304,austenitic,cold_formed,195000,247.0,7.0,measured,,,,CHS,168.7,,3.26,2004.0,fixed-fixed,1002.0,-,0.38,0.0,0.38,431.6
+young2002_09,young2002,young2002_C,experimental,304,austenitic,cold_formed,202000,248.0,9.0,measured,,,,CHS,322.5,,4.25,1499.0,fixed-fixed,749.5,-,0.25,0.0,0.25,1119.7
+young2002_10,young2002,young2002_C,experimental,304,austenitic,cold_formed,202000,248.0,9.0,measured,,,,CHS,320.4,,4.48,1999.0,fixed-fixed,999.5,-,0.62,0.0,0.62,1087.8
+young2002_11,young2002,young2002_C,experimental,304,austenitic,cold_formed,202000,248.0,9.0,measured,,,,CHS,324.1,,4.24,2498.0,fixed-fixed,1249.0,-,0.50,0.0,0.50,1045.7
+young2002_12,young2002,young2002_C,experimental,304,austenitic,cold_formed,202000,248.0,9.0,measured,,,,CHS,324.3,,4.38,2998.0,fixed-fixed,1499.0,-,1.50,0.0,1.50,1009.5
