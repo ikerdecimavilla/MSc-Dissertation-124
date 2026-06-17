@@ -31,7 +31,7 @@ def build():
     # Combine and save master dataset
     if frames:
         master = pd.concat(frames, ignore_index=True)
-        master.to_csv(PROCESSED / "master.csv", index=False)
+        master.to_csv(DATA_DIR / "master.csv", index=False)
         print("Success! master.csv updated.")
 
 if __name__ == "__main__":
