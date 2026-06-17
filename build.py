@@ -20,6 +20,8 @@ def build():
     for csv in sorted(csv_files):
         print(f"Processing: {csv.name}")
         df = pd.read_csv(csv)
+        
+        df = df.dropna(subset=["section_type"])
 
         enriched = add_features(df)      # geometry + mechanics (A, I, lambda_bar, ...)
         classified = classify(enriched)  # EN 1993-1-4 class + inferred_failure_mode
