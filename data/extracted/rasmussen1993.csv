@@ -1,4 +1,4 @@
-specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,cross_section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
 rasmussen1993_01,rasmussen1993,rasmussen1993_A,experimental,304L,austenitic,cold_formed,191000,440.0,3.0,measured,,,,SHS,80.5,80.5,2.90,1001.0,pin-pin,1451.0,-,0.30,0.40,0.70,390.0,global_flexural
 rasmussen1993_02,rasmussen1993,rasmussen1993_A,experimental,304L,austenitic,cold_formed,191000,440.0,3.0,measured,,,,SHS,80.3,80.3,2.98,1001.0,pin-pin,1451.0,-,0.60,0.30,0.90,344.0,global_flexural
 rasmussen1993_03,rasmussen1993,rasmussen1993_A,experimental,304L,austenitic,cold_formed,191000,440.0,3.0,measured,,,,SHS,80.4,80.4,2.99,2000.0,pin-pin,2450.0,-,0.10,0.50,0.60,193.0,global_flexural

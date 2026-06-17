@@ -19,7 +19,7 @@ def add_features(df):
     out["lambda"] = out["Le"] / out["R"]
     
     # 5. Euler Elastic Buckling Load
-    out["N_cr"] = np.pi**2 * out["E"] * I_crit / out["Le"]**2
+    out["N_cr"] = np.pi**2 * out["E0"] * I_crit / out["Le"]**2
     
     # 6. Yield Load (using 0.2% proof stress)
     out["N_y"] = out["A"] * out["sigma_02"]

@@ -1,4 +1,4 @@
-specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,cross_section_type,b,h,t,L,boundary_condition,Le,w_0,w_e,w_total,N_u,failure_mode,buckling_axis
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,L,boundary_condition,Le,w_0,w_e,w_total,N_u,failure_mode,buckling_axis
 buchanan2018_01,buchanan2018,buchanan2018_A,experimental,1.4432,austenitic,cold_formed,196050,283.5,8.6,measured,323.5,3.65,615.0,CHS,105.74,,2.78,554.27,pin-pin,554.27,0.25,0.21,0.46,267.0,global_flexural,-
 buchanan2018_02,buchanan2018,buchanan2018_A,experimental,1.4432,austenitic,cold_formed,196050,283.5,8.6,measured,323.5,3.65,615.0,CHS,105.81,,2.88,754.21,pin-pin,754.21,0.05,0.68,0.73,244.8,global_flexural,-
 buchanan2018_03,buchanan2018,buchanan2018_A,experimental,1.4432,austenitic,cold_formed,196050,283.5,8.6,measured,323.5,3.65,615.0,CHS,105.77,,2.72,754.21,pin-pin,754.21,0.40,0.46,0.86,242.2,global_flexural,-

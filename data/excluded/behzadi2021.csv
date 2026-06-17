@@ -1,4 +1,4 @@
-specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_u,sigma_10,n_prime,cross_section_type,b,h,t,r1,r2,L,Le,boundary_condition,w_0,w_e,w_total,N_u,failure_mode,buckling_axis
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_u,sigma_10,n_prime,section_type,b,h,t,r1,r2,L,Le,boundary_condition,w_0,w_e,w_total,N_u,failure_mode,buckling_axis
 behzadi2021_01,behzadi2021,behzadi2021_A,Experimental,1.4307,austenitic,hot_rolled,190000,303,11.8,measured,356,2.4,657,Angle,70.45,70.45,9.65,7.0,3.5,999,499.5,fixed-fixed,0.70,0.00,0.70,361.2,global_flexural,minor
 behzadi2021_02,behzadi2021,behzadi2021_A,Experimental,1.4307,austenitic,hot_rolled,190000,303,11.8,measured,356,2.4,657,Angle,70.41,70.41,9.61,7.0,3.5,1497,748.5,fixed-fixed,0.85,0.00,0.85,314.9,global_flexural,minor
 behzadi2021_03,behzadi2021,behzadi2021_A,Experimental,1.4307,austenitic,hot_rolled,190000,303,11.8,measured,356,2.4,657,Angle,70.42,70.42,9.63,7.0,3.5,1998,999.0,fixed-fixed,0.90,0.00,0.90,234.2,global_flexural,minor

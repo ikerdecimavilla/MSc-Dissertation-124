@@ -1,4 +1,4 @@
-specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,cross_section_type,b,h,t,r1,r2,L,Le,Le,w_0,w_e,w_total,N_u,failure_mode,buckling_axis
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,r1,r2,L,Le,Le,w_0,w_e,w_total,N_u,failure_mode,buckling_axis
 theofanous2009_01,theofanous2009,theofanous2009_B,experimental,1.4162,lean_duplex,cold_formed,197200,657,4.7,measured,770,2.6,773,SHS,79.5,79.6,3.80,,,1999.0,1999.0,1999.0,0.41,0.92,1.33,361.9,global_flexural,
 theofanous2009_02,theofanous2009,theofanous2009_B,experimental,1.4162,lean_duplex,cold_formed,197200,657,4.7,measured,770,2.6,773,SHS,79.6,79.3,3.72,,,1199.5,1199.5,1199.5,0.10,0.70,0.80,672.5,global_flexural,
 theofanous2009_03,theofanous2009,theofanous2009_C,experimental,1.4162,lean_duplex,cold_formed,206400,711,5.0,measured,845,2.7,839,SHS,60.0,60.0,3.13,,,1999.0,1999.0,1999.0,0.31,1.02,1.33,162.3,global_flexural,

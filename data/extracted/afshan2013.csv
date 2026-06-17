@@ -1,4 +1,4 @@
-specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_u,sigma_10,n_prime,cross_section_type,b,h,t,L,Le,boundary_condition,w_0,w_e,w_total,N_u,failure_mode,buckling_axis
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_u,sigma_10,n_prime,section_type,b,h,t,L,Le,boundary_condition,w_0,w_e,w_total,N_u,failure_mode,buckling_axis
 afshan2013_01,afshan2013,afshan2013_A,experimental,1.4003,ferritic,cold_formed,211150,404,5.8,measured,472,451,3.1,RHS,79.9,120.0,2.87,1077,1077,pin-pin,0.95,0.00,0.95,463,,
 afshan2013_02,afshan2013,afshan2013_A,experimental,1.4003,ferritic,cold_formed,211150,404,5.8,measured,472,451,3.1,RHS,79.9,120.0,2.81,1577,1577,pin-pin,0.96,0.09,1.05,382,,
 afshan2013_03,afshan2013,afshan2013_A,experimental,1.4003,ferritic,cold_formed,211150,404,5.8,measured,472,451,3.1,RHS,79.8,120.0,2.78,2077,2077,pin-pin,1.05,0.33,1.38,391,,

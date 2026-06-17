@@ -1,4 +1,6 @@
 import numpy as np
+import pandas as pd
+
 SECTION_CALCS = {}      # dictionary of cross-section types
                         # every time a new section is added, a new function should be added to this dictionary
 
@@ -27,43 +29,57 @@ def chs(row):
     I = np.pi/64*(D**4 - d**4)
     return A, I, I           # symmetric
 
+@register("I")
+def i_section(row):
+    """Doubly-symmetric I / H section.
+
+    Sharp corners (root radii neglected -> conservative for classification).
+    Uses separate flange/web thicknesses t_f, t_w when the columns are present,
+    otherwise falls back to the single 't' (e.g. equal-thickness welded I).
+    """
+    b, h, t = row["b"], row["h"], row["t"]
+    t_f = row.get("t_f", t); t_w = row.get("t_w", t)
+    if pd.isna(t_f): t_f = t
+    if pd.isna(t_w): t_w = t
+
+    A = 2*b*t_f + (h - 2*t_f)*t_w
+    I_major = (b*h**3 - (b - t_w)*(h - 2*t_f)**3) / 12     # strong axis (y-y)
+    I_minor = (2*t_f*b**3 + (h - 2*t_f)*t_w**3) / 12       # weak axis (z-z)
+    return A, I_major, I_minor
+
+@register("H")
+def h_section(row):
+    return i_section(row)      # 'H' label -> same doubly-symmetric formulae
+
 @register("Angle")
 def angle(row):
     b, h, t, r1, r2 = row["b"], row["h"], row["t"], row["r1"], row["r2"]
-    
+
     # 1. Area (Exact formulation including root and toe radii)
     A_rect = (b + h - t) * t
     A_root = (1 - np.pi/4) * r1**2
     A_toe = 2 * (1 - np.pi/4) * r2**2
     A = A_rect + A_root - A_toe
-    
+
     # 2. Centroid (Using rectangular approximation for inertia performance)
-    # Leg 1: Vertical (h x t), Leg 2: Horizontal ((b-t) x t)
     A1, y1, z1 = h * t, t / 2, h / 2
     A2, y2, z2 = (b - t) * t, t + (b - t) / 2, t / 2
-    
     A_simp = A1 + A2
     yc = (A1 * y1 + A2 * y2) / A_simp
     zc = (A1 * z1 + A2 * z2) / A_simp
-    
+
     # 3. Second Moments of Area (Iy, Iz) via Parallel Axis Theorem
     Iy1 = (t * h**3) / 12 + A1 * (z1 - zc)**2
     Iy2 = ((b - t) * t**3) / 12 + A2 * (z2 - zc)**2
     Iy = Iy1 + Iy2
-    
     Iz1 = (h * t**3) / 12 + A1 * (y1 - yc)**2
     Iz2 = (t * (b - t)**3) / 12 + A2 * (y2 - yc)**2
     Iz = Iz1 + Iz2
-    
+
     # 4. Product of Inertia (Iyz)
     Iyz = A1 * (y1 - yc) * (z1 - zc) + A2 * (y2 - yc) * (z2 - zc)
-    
+
     # 5. Principal Axes (I_major, I_minor) via Mohr's Circle rotation
     I_avg = (Iy + Iz) / 2
     R = np.sqrt(((Iy - Iz) / 2)**2 + Iyz**2)
-    
-    I_major = I_avg + R
-    I_minor = I_avg - R
-    
-    return A, I_major, I_minor
-
+    return A, I_avg + R, I_avg - R
