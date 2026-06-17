@@ -1,4 +1,4 @@
-specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,cross_section_type,b,h,t,t_f,t_w,L,boundary_condition,Le,buckling_axis,w0,we,wtotal,N_u,failure_mode
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,t_f,t_w,L,boundary_condition,Le,buckling_axis,w0,we,wtotal,N_u,failure_mode
 yuan2015_01,yuan2015,yuan2015_A,experimental,1.4301,austenitic,welded,188600,312.6,5.8,measured,354.4,,695.7,I,245.5,252.7,6.00,6.00,6.00,2938.0,pin-pin,3278.0,minor,0.28,-1.86,-1.58,842.9,interactive
 yuan2015_02,yuan2015,yuan2015_A,experimental,1.4301,austenitic,welded,188600,312.6,5.8,measured,354.4,,695.7,I,305.0,313.3,6.00,6.00,6.00,3137.1,pin-pin,3477.1,minor,0.39,-0.42,-0.03,990.5,interactive
 yuan2015_03,yuan2015,yuan2015_A,experimental,1.4301,austenitic,welded,188600,312.6,5.8,measured,354.4,,695.7,I,245.5,373.1,6.00,6.00,6.00,2888.5,pin-pin,3228.5,minor,0.60,-1.64,-1.03,893.5,interactive
