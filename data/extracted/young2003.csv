@@ -1,0 +1,17 @@
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
+young2003_01,young2003,young2003_A,experimental,304,austenitic,cold_formed,180000,295.0,5.5,measured,,,,RHS,40.1,120.1,1.94,1198.5,fixed-fixed,599.25,minor,0.254,0.0,0.254,167.0
+young2003_02,young2003,young2003_A,experimental,304,austenitic,cold_formed,180000,295.0,5.5,measured,,,,RHS,40.0,120.2,1.95,2000.0,fixed-fixed,1000.0,minor,0.444,0.0,0.444,141.3
+young2003_03,young2003,young2003_A,experimental,304,austenitic,cold_formed,180000,295.0,5.5,measured,,,,RHS,40.0,120.2,1.97,2800.0,fixed-fixed,1400.0,minor,1.522,0.0,1.522,96.2
+young2003_04,young2003,young2003_A,experimental,304,austenitic,cold_formed,180000,295.0,5.5,measured,,,,RHS,40.0,120.2,1.96,3600.0,fixed-fixed,1800.0,minor,0.763,0.0,0.763,83.7
+young2003_05,young2003,young2003_B,experimental,304,austenitic,cold_formed,186000,498.0,3.0,measured,,,,RHS,39.9,119.7,5.31,1200.0,fixed-fixed,600.0,minor,0.127,0.0,0.127,717.4
+young2003_06,young2003,young2003_B,experimental,304,austenitic,cold_formed,186000,498.0,3.0,measured,,,,RHS,40.1,119.7,5.27,2000.0,fixed-fixed,1000.0,minor,0.571,0.0,0.571,416.7
+young2003_07,young2003,young2003_B,experimental,304,austenitic,cold_formed,186000,498.0,3.0,measured,,,,RHS,40.0,119.8,5.29,2801.0,fixed-fixed,1400.5,minor,0.191,0.0,0.191,260.9
+young2003_08,young2003,young2003_B,experimental,304,austenitic,cold_formed,186000,498.0,3.0,measured,,,,RHS,40.1,119.7,5.27,3600.0,fixed-fixed,1800.0,minor,1.967,0.0,1.967,163.7
+young2003_09,young2003,young2003_C,experimental,304,austenitic,cold_formed,191000,383.0,4.0,measured,,,,RHS,80.1,119.9,2.82,1199.5,fixed-fixed,599.75,minor,0.127,0.0,0.127,398.3
+young2003_10,young2003,young2003_C,experimental,304,austenitic,cold_formed,191000,383.0,4.0,measured,,,,RHS,80.0,120.0,2.80,2000.0,fixed-fixed,1000.0,minor,0.381,0.0,0.381,394.0
+young2003_11,young2003,young2003_C,experimental,304,austenitic,cold_formed,191000,383.0,4.0,measured,,,,RHS,79.9,119.4,2.92,2799.5,fixed-fixed,1399.75,minor,2.333,0.0,2.333,336.8
+young2003_12,young2003,young2003_C,experimental,304,austenitic,cold_formed,191000,383.0,4.0,measured,,,,RHS,80.1,119.7,2.90,3598.5,fixed-fixed,1799.25,minor,0.381,0.0,0.381,310.6
+young2003_13,young2003,young2003_D,experimental,304,austenitic,cold_formed,191000,482.0,3.0,measured,,,,RHS,80.2,120.1,6.01,1199.5,fixed-fixed,599.75,minor,0.082,0.0,0.082,1222.0
+young2003_14,young2003,young2003_D,experimental,304,austenitic,cold_formed,191000,482.0,3.0,measured,,,,RHS,80.4,120.1,6.02,2000.0,fixed-fixed,1000.0,minor,2.532,0.0,2.532,970.4
+young2003_15,young2003,young2003_D,experimental,304,austenitic,cold_formed,191000,482.0,3.0,measured,,,,RHS,80.6,120.3,5.96,2800.0,fixed-fixed,1400.0,minor,1.842,0.0,1.842,859.7
+young2003_16,young2003,young2003_D,experimental,304,austenitic,cold_formed,191000,482.0,3.0,measured,,,,RHS,80.5,120.2,6.11,3600.0,fixed-fixed,1800.0,minor,0.826,0.0,0.826,612.2
