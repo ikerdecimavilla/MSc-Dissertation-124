@@ -18,8 +18,6 @@ This experimental study investigated the compressive strength of fixed-ended col
 
 n_source = measured
 
-* **Reasoning:** The authors state that $n$ was obtained from the "measured 0.01% ($\sigma_{0.01}$) and 0.2% ($\sigma_{0.2}$) proof stresses using $n = \ln(0.01/0.2) / \ln(\sigma_{0.01}/\sigma_{0.2})$." Because this algebraic formula is applied directly to the stress points measured during their physical stub column tests (rather than a theoretical proxy), it is classed as a measured value.
-
 ## 4. Batch structure and study_id groupings
 
 There are 4 distinct physical material batches, separated perfectly by the four cross-section series (R1, R2, R3, R4). Each series shares a unique set of averaged stub column material properties.
