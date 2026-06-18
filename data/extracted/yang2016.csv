@@ -1,0 +1,13 @@
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
+yang2016_01,yang2016,yang2016_A,experimental,1.4301,austenitic,welded,182300,282.0,6.5,measured,,,660.0,SHS,129.9,129.9,6.00,1542.7,pin-pin,1882.7,-,0.398,-0.940,-0.542,921.0,global_flexural
+yang2016_02,yang2016,yang2016_A,experimental,1.4301,austenitic,welded,182300,282.0,6.5,measured,,,660.0,SHS,130.0,130.0,6.00,2036.8,pin-pin,2376.8,-,0.428,7.230,7.658,776.0,global_flexural
+yang2016_03,yang2016,yang2016_A,experimental,1.4301,austenitic,welded,182300,282.0,6.5,measured,,,660.0,SHS,129.9,129.9,6.00,3034.3,pin-pin,3374.3,-,0.570,14.570,15.140,545.0,global_flexural
+yang2016_04,yang2016,yang2016_A,experimental,1.4301,austenitic,welded,182300,282.0,6.5,measured,,,660.0,SHS,130.1,130.1,6.00,3537.6,pin-pin,3877.6,-,0.643,-1.635,-0.992,557.0,global_flexural
+yang2016_05,yang2016,yang2016_A,experimental,1.4301,austenitic,welded,182300,282.0,6.5,measured,,,660.0,SHS,129.8,129.8,6.00,4038.6,pin-pin,4378.6,-,0.363,-3.170,-2.807,427.0,global_flexural
+yang2016_06,yang2016,yang2016_A,experimental,1.4301,austenitic,welded,182300,282.0,6.5,measured,,,660.0,SHS,99.8,99.8,6.00,4031.5,pin-pin,4371.5,-,0.307,1.885,2.192,275.0,global_flexural
+yang2016_07,yang2016,yang2016_B,experimental,1.4462,duplex,welded,191900,553.0,7.4,measured,,,798.0,SHS,130.5,130.5,6.00,1538.2,pin-pin,1878.2,-,0.283,1.130,1.413,1496.0,global_flexural
+yang2016_08,yang2016,yang2016_B,experimental,1.4462,duplex,welded,191900,553.0,7.4,measured,,,798.0,SHS,130.5,130.5,6.00,2037.0,pin-pin,2377.0,-,0.256,1.505,1.761,1265.0,global_flexural
+yang2016_09,yang2016,yang2016_B,experimental,1.4462,duplex,welded,191900,553.0,7.4,measured,,,798.0,SHS,130.8,130.8,6.00,3037.3,pin-pin,3377.3,-,0.349,-1.180,-0.831,911.0,global_flexural
+yang2016_10,yang2016,yang2016_B,experimental,1.4462,duplex,welded,191900,553.0,7.4,measured,,,798.0,SHS,130.7,130.7,6.00,3536.1,pin-pin,3876.1,-,0.858,2.045,2.903,732.0,global_flexural
+yang2016_11,yang2016,yang2016_B,experimental,1.4462,duplex,welded,191900,553.0,7.4,measured,,,798.0,SHS,130.1,130.1,6.00,4036.1,pin-pin,4376.1,-,0.122,-2.415,-2.293,574.0,global_flexural
+yang2016_12,yang2016,yang2016_B,experimental,1.4462,duplex,welded,191900,553.0,7.4,measured,,,798.0,SHS,100.1,100.1,6.00,4033.1,pin-pin,4373.1,-,0.453,-4.330,-3.877,349.0,global_flexural
