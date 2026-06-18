@@ -1,0 +1,11 @@
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
+sun2020_01,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,99.17,149.49,6.04,799.0,pin-pin,909.0,minor,0.13,0.19,0.32,583.0,global_flexural
+sun2020_02,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,99.47,149.31,5.97,949.0,pin-pin,1059.0,minor,0.23,0.18,0.41,506.7,global_flexural
+sun2020_03,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,99.25,149.48,5.99,1150.0,pin-pin,1260.0,minor,0.29,0.21,0.50,473.6,global_flexural
+sun2020_04,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,99.38,149.51,6.00,1449.0,pin-pin,1559.0,minor,0.29,0.14,0.43,379.3,global_flexural
+sun2020_05,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,99.41,149.38,5.98,1749.0,pin-pin,1859.0,minor,0.40,0.19,0.59,330.9,global_flexural
+sun2020_06,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,119.18,149.34,6.01,848.0,pin-pin,958.0,minor,0.16,0.26,0.42,681.6,global_flexural
+sun2020_07,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,119.32,149.08,6.00,1047.0,pin-pin,1157.0,minor,0.24,0.20,0.44,614.0,global_flexural
+sun2020_08,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,119.22,149.38,6.03,1399.0,pin-pin,1509.0,minor,0.31,0.32,0.63,561.8,global_flexural
+sun2020_09,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,119.63,149.52,6.00,1701.0,pin-pin,1811.0,minor,0.37,0.26,0.63,465.3,global_flexural
+sun2020_10,sun2020,sun2020_A,experimental,1.4420,austenitic,welded,187900,339.0,3.5,measured,398.0,2.5,718.0,I,119.48,149.08,6.00,1848.0,pin-pin,1958.0,minor,0.42,0.29,0.71,437.5,global_flexural
