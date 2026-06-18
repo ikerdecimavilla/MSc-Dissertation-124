@@ -1,0 +1,9 @@
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
+liu2003_01,liu2003,liu2003_A,experimental,304,austenitic,cold_formed,192000,381.0,3.0,measured,,,,SHS,70.0,69.9,1.92,1199.0,fixed-fixed,599.5,-,0.241,0.0,0.241,189.8
+liu2003_02,liu2003,liu2003_A,experimental,304,austenitic,cold_formed,192000,381.0,3.0,measured,,,,SHS,70.1,69.9,1.95,2000.0,fixed-fixed,1000.0,-,0.952,0.0,0.952,188.1
+liu2003_03,liu2003,liu2003_A,experimental,304,austenitic,cold_formed,192000,381.0,3.0,measured,,,,SHS,70.2,69.9,1.92,2800.5,fixed-fixed,1400.25,-,0.635,0.0,0.635,159.2
+liu2003_04,liu2003,liu2003_A,experimental,304,austenitic,cold_formed,192000,381.0,3.0,measured,,,,SHS,70.1,70.0,1.93,3599.0,fixed-fixed,1799.5,-,3.788,0.0,3.788,115.0
+liu2003_05,liu2003,liu2003_B,experimental,304,austenitic,cold_formed,188000,497.0,3.0,measured,,,,SHS,69.9,70.0,4.86,1199.0,fixed-fixed,599.5,-,0.317,0.0,0.317,669.3
+liu2003_06,liu2003,liu2003_B,experimental,304,austenitic,cold_formed,188000,497.0,3.0,measured,,,,SHS,70.0,70.0,4.91,2000.0,fixed-fixed,1000.0,-,1.905,0.0,1.905,510.4
+liu2003_07,liu2003,liu2003_B,experimental,304,austenitic,cold_formed,188000,497.0,3.0,measured,,,,SHS,70.0,69.9,4.91,2799.0,fixed-fixed,1399.5,-,2.545,0.0,2.545,407.2
+liu2003_08,liu2003,liu2003_B,experimental,304,austenitic,cold_formed,188000,497.0,3.0,measured,,,,SHS,69.9,70.0,4.86,3600.0,fixed-fixed,1800.0,-,3.789,0.0,3.789,280.7
