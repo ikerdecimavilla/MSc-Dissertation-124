@@ -1,4 +1,4 @@
-specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,cross_section_type,b,h,t,t_f,t_w,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
+specimen_id,source_id,study_id,data_type,material_grade,material_type,forming_route,E0,sigma_02,n,n_source,sigma_10,n_prime,sigma_u,section_type,b,h,t,t_f,t_w,L,boundary_condition,Le,buckling_axis,w_0,w_e,w_total,N_u,failure_mode
 gardner2016_01,gardner2016,gardner2016_A,experimental,1.4307,austenitic,laser_welded,193700,272.0,7.1,measured,328.0,2.4,615.0,I,140.64,139.73,9.73,11.88,9.73,1030.1,pin-pin,1030.1,minor,0.28,0.07,0.35,1294.6,global_flexural
 gardner2016_02,gardner2016,gardner2016_A,experimental,1.4307,austenitic,laser_welded,193700,272.0,7.1,measured,328.0,2.4,615.0,I,140.62,140.17,9.86,11.91,9.86,2032.1,pin-pin,2032.1,minor,0.29,1.13,1.42,950.6,global_flexural
 gardner2016_03,gardner2016,gardner2016_B,experimental,1.4307,austenitic,laser_welded,190700,270.0,4.0,measured,361.0,3.2,694.0,I,50.53,50.43,4.03,4.05,4.03,1631.1,pin-pin,1631.1,minor,0.38,0.15,0.53,56.0,global_flexural
