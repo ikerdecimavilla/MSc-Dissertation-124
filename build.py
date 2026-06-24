@@ -41,6 +41,23 @@ def _validate(master):
     assert not neg.any(), \
         f"negative w_total for: {master.loc[neg, 'specimen_id'].tolist()}"
 
+    # 6. Class must agree with the governing-plate utilisation: Class 4 iff the
+    #    governing plate is past its Class 3 limit (norm > 1).
+    cl, norm = master["section_class"], master["cs_slenderness_norm"]
+    known = cl.notna() & norm.notna()
+    bad_c4 = known & (cl == 4) & (norm <= 1 - 1e-9)
+    bad_lo = known & (cl < 4) & (norm > 1 + 1e-9)
+    assert not bad_c4.any(), \
+        f"Class 4 with utilisation <= 1: {master.loc[bad_c4, 'specimen_id'].tolist()}"
+    assert not bad_lo.any(), \
+        f"Class 1-3 with utilisation > 1: {master.loc[bad_lo, 'specimen_id'].tolist()}"
+
+    # 7. No local-contaminated (Class 4) row may be flagged eligible for the
+    #    global flexural buckling training set.
+    bad_elig = master["global_buckling_eligible"] & (master["section_class"] == 4)
+    assert not bad_elig.any(), \
+        f"Class-4 row marked global-buckling eligible: {master.loc[bad_elig, 'specimen_id'].tolist()}"
+
 
 def build():
     PROCESSED.mkdir(parents=True, exist_ok=True)

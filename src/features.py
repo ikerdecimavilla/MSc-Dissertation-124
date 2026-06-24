@@ -128,11 +128,20 @@ def _total_imperfection(out):
     """
     w_total = (out["w_0"].fillna(0) + out["w_e"].fillna(0)).abs()
 
-    biax_cols = {"w_0_1", "w_e_1", "w_0_2", "w_e_2"}
-    if biax_cols.issubset(out.columns):
-        chs = out["section_type"] == "CHS"
-        net1 = out["w_0_1"].fillna(0) + out["w_e_1"].fillna(0)
-        net2 = out["w_0_2"].fillna(0) + out["w_e_2"].fillna(0)
-        w_total = w_total.where(~chs, np.sqrt(net1**2 + net2**2))
+    # CHS biaxial imperfections: where the per-axis components are supplied, the
+    # effective imperfection is the resultant of the two net (bow + eccentricity)
+    # axis offsets, not the 1-D sum. Applied per-row so partial coverage is safe:
+    # CHS rows with all four components use the resultant; everything else keeps
+    # the planar |w_0 + w_e|.
+    biax_cols = ["w_0_1", "w_e_1", "w_0_2", "w_e_2"]
+    if set(biax_cols).issubset(out.columns):
+        have_all = out[biax_cols].notna().all(axis=1)
+        # Symmetric sections (SHS, CHS) can bend biaxially, so the effective
+        # imperfection is the resultant of the two orthogonal net offsets.
+        use_resultant = out["section_type"].isin(["SHS", "CHS"]) & have_all
+        net1 = out["w_0_1"] + out["w_e_1"]
+        net2 = out["w_0_2"] + out["w_e_2"]
+        resultant = np.sqrt(net1**2 + net2**2)
+        w_total = w_total.where(~use_resultant, resultant)
 
     return w_total

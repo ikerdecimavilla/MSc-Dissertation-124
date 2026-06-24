@@ -1,6 +1,6 @@
 # Master Dataset — Data Dictionary
 
-**Version:** 1.3  
+**Version:** 1.4  
 **Date:** 24/06/2026  
 **Description:** Column definitions for the master dataset of Ramberg–Osgood material column buckling experiments and FEA parametric studies.
 
@@ -70,6 +70,10 @@ Raw cross-section dimensions are stored per specimen. Derived section properties
 | `buckling_axis_source` | Computed | categorical | — | Provenance of `buckling_axis`. Allowed values: `reported` (stated by the source), `symmetric` (SHS/CHS, recorded as `-`), `derived` (asymmetric default to minor axis). |
 | `w_0` | Optional | float | mm | Initial global geometric imperfection amplitude (maximum bow). Signed where the source reports a direction. Notation changes across sources: w0, omega_g, delta_v, delta_mid, e0. |
 | `w_e` | Optional | float | mm | Artificially applied initial loading eccentricity introduced by researchers during testing to achieve a specific target imperfection (e.g., L/1000). Signed where the source reports a direction. Where researchers tested concentrically or did not actively apply an eccentricity, this is populated as 0.0. |
+| `w_0_1` | Optional | float | mm | First-plane geometric bow for sections measured biaxially (SHS/CHS). Stored with the source's sign. Component of the biaxial imperfection resultant. |
+| `w_e_1` | Optional | float | mm | First-plane eccentricity contribution, sign-aligned so that `w_0_1 + w_e_1` is the net first-plane offset. For Rasmussen, whose paper defines the net as `|v0 - e0|`, this equals `-e0`. |
+| `w_0_2` | Optional | float | mm | Second-plane (orthogonal) geometric bow for biaxially measured sections. |
+| `w_e_2` | Optional | float | mm | Second-plane eccentricity contribution, sign-aligned so that `w_0_2 + w_e_2` is the net second-plane offset. |
 
  
 ---
@@ -100,11 +104,14 @@ These columns are derived from the mandatory raw inputs. They are never entered 
 | `lambda_bar` | Computed | float | — | sqrt(N_y / N_cr); equivalently (Le / (pi * R)) * sqrt(sigma_02 / E0) | Non-dimensional slenderness per Köllner, Gardner & Wadee (2023). The two formulae are asserted equal at build time as a unit-error guard. |
 | `chi` | Computed | float | — | N_u / N_y | Experimental strength reduction factor. |
 | `epsilon` | Computed | float | — | sqrt((235 / sigma_02) * (E0 / 210000)) | Material factor per EN 1993-1-4 Table 5.2. |
-| `cs_slenderness` | Computed | float | — | See EN 1993-1-4 Table 5.2 | Governing plate slenderness used for the cross-section class: c/t for SHS/RHS/I, d/t for CHS. |
+| `cs_slenderness` | Computed | float | — | See EN 1993-1-4 Table 5.2 | Slenderness (c/t for SHS/RHS/I, d/t for CHS) of the **governing** plate, i.e. the plate ranked highest by (class, utilisation). Because the web and flange of an I-section carry different EN limits, the governing plate is selected by utilisation rather than by the largest raw ratio. |
+| `cs_slenderness_norm` | Computed | float | — | (c/t) / (class-3 limit) of the governing plate | Normalised plate utilisation of the governing plate. `> 1` means the plate is past its Class 3 limit (Class 4). Cross-section-agnostic, so directly comparable across section types; preferred over raw `cs_slenderness` as an ML feature. |
 | `section_class` | Computed | integer | — | See EN 1993-1-4 Table 5.2 | EN 1993-1-4 cross-section class under uniform compression. Allowed values: `1`, `2`, `3`, `4`, or null. Null for `Angle` (excluded from classification) and where geometry needed for the check (e.g. `t`) is missing. |
 | `lambda_0` | Computed | float | — | See EN 1993-1-4 Table 5.3 | Limiting slenderness for flexural buckling. `0.40` for hollow and rolled / cold-formed open sections; `0.20` for welded open sections (forming route `welded` or `laser_welded`). |
 | `inferred_failure_mode` | Computed | categorical | — | From `section_class` and `lambda_bar` | Failure mode inferred where `failure_mode` is not reported. Allowed values: `global_flexural`, `yielding`, `local`, `interactive`, `unknown`. `interactive` corresponds to the reported `interactive` category; `unknown` is used for excluded angles or where `section_class` could not be determined. |
-| `w_total` | Computed | float | mm | abs(w_0 + w_e) | Total effective global imperfection experienced by the column during testing, stored as a non-negative magnitude. `w_0` (measured bow) and `w_e` (applied eccentricity) carry a direction sign, so the net midspan offset is their algebraic sum and the severity is the magnitude of that sum; taking the absolute value prevents the negative totals that a raw signed sum produces when bow and eccentricity oppose. For CHS members reporting biaxial imperfections, if the per-axis components (`w_0_1`, `w_e_1`, `w_0_2`, `w_e_2`) are supplied, the resultant `sqrt((w_0_1 + w_e_1)^2 + (w_0_2 + w_e_2)^2)` is used instead. This combined metric is required for the Stage 2 ML model to predict the β correction factor from the actual imperfection state. |
+| `global_buckling_eligible` | Computed | boolean | — | From `section_class` and `inferred_failure_mode` | `True` for a clean global flexural buckling data point. `False` for any Class 4 section or any row whose inferred mode is `local`, `interactive`, or `unknown`. Use this to filter the Stage 1 / Stage 2 training set, keeping `master.csv` complete rather than deleting rows. Stocky `yielding` (Class 1-3) points are retained. |
+| `failure_mode_conflict` | Computed | boolean | — | From `failure_mode` and `inferred_failure_mode` | `True` where a row reported as `global_flexural` is computed to be pure `local` buckling (stocky Class 4). Flags likely manual-extraction scope-creep mislabels for review. |
+| `w_total` | Computed | float | mm | see Description | Total effective global imperfection, stored as a non-negative magnitude. **Planar sections** (single bending plane): `abs(w_0 + w_e)` — the magnitude of the net midspan offset (bow plus eccentricity, sign-aligned), which avoids the negative totals a raw signed sum produces when the two oppose. **Symmetric sections measured biaxially** (SHS/CHS with the four `w_*_1/2` components present): the resultant of the two orthogonal net offsets, `sqrt((w_0_1 + w_e_1)^2 + (w_0_2 + w_e_2)^2)`, matching the Rasmussen paper's `sqrt((v01-e01)^2 + (v02-e02)^2)`. Required for the Stage 2 ML model to predict β from the actual imperfection state. |
 ---
  
 ## General Notes
@@ -120,6 +127,13 @@ These columns are derived from the mandatory raw inputs. They are never entered 
 ---
 
 ## Changelog
+
+**v1.4 — 24/06/2026**
+- Added biaxial imperfection components `w_0_1`, `w_e_1`, `w_0_2`, `w_e_2` for SHS/CHS sections measured in two principal planes (Rasmussen). `w_total` now uses the resultant of the two orthogonal net offsets for these sections.
+- `cs_slenderness`: redefined as the slenderness of the **governing** plate, selected by (class, utilisation) so that the web/flange limit difference for I-sections is handled correctly (previously took the largest raw ratio).
+- Added `cs_slenderness_norm` (governing-plate utilisation; `>1` == Class 4).
+- Added `global_buckling_eligible` (scope filter excluding Class 4 / local / interactive / unknown) and `failure_mode_conflict` (reported-global vs inferred-pure-local mislabel flag).
+- Sign convention for `w_e` / `w_e_1` / `w_e_2`: stored so that `w_0 + w_e` reproduces the source's net imperfection. For Rasmussen the paper defines the net as `|v0 - e0|`, so the eccentricity is stored as `-e0`.
 
 **v1.3 — 24/06/2026**
 - `forming_route`: added `welded` to the allowed vocabulary (generic welded open section); it selects the welded outstand limits and the `0.20` flexural plateau, fixing welded I-sections previously defaulting to `0.40`.
