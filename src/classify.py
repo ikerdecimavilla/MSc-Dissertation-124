@@ -13,12 +13,16 @@ _TUBULAR_LIMITS = (50.0, 70.0, 90.0)           # CHS  -- NOTE: multiply epsilon*
 # forming_route -> outstand limit family (only affects open sections, i.e. I).
 # hot_rolled / hot_finished are non-welded and have no dedicated EN row; they are
 # mapped to the (more generous) cold-formed limits. Documented assumption.
+# Both the specific 'laser_welded' and the generic 'welded' routes select the
+# welded limit set (and lambda_0 = 0.20). Omitting 'welded' previously caused
+# welded I-sections to default to the cold/rolled plateau of 0.40.
 _WELD_BASIS = {
     "cold_formed":  "cold",
     "press_braked": "cold",
     "hot_rolled":   "cold",
     "hot_finished": "cold",
     "laser_welded": "welded",
+    "welded":       "welded",
 }
 
 _CLASSIFIED = {"RHS", "SHS", "CHS", "I", "H"}   # section types handled here
@@ -112,7 +116,7 @@ def failure_mode(section_class, lambda_bar, lambda_0):
 def classify(df):
     """Add EN 1993-1-4 classification columns to a feature-enriched frame.
 
-    Expects `lambda_bar`, `sigma_02`, `E` and the geometry columns to be present
+    Expects `lambda_bar`, `sigma_02`, `E0` and the geometry columns to be present
     (i.e. run features.add_features first).
     """
     out = df.copy()

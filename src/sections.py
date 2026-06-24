@@ -12,11 +12,18 @@ def register(section_type):
 
 @register("RHS")
 def rhs(row):
+    """Rectangular hollow section (sharp corners).
+
+    I_major / I_minor are assigned BY MAGNITUDE, not by a fixed geometric axis.
+    The previous version always labelled (b*h^3)/12 as 'major', which is only
+    correct when h >= b; for wide RHS (b > h) it silently swapped the labels and
+    corrupted axis selection downstream (e.g. theofanous2009 RHS).
+    """
     b, h, t = row["b"], row["h"], row["t"]
     A = b*h - (b-2*t)*(h-2*t)
-    I_major = (b*h**3 - (b-2*t)*(h-2*t)**3) / 12
-    I_minor = (h*b**3 - (h-2*t)*(b-2*t)**3) / 12
-    return A, I_major, I_minor
+    I_bh = (b*h**3 - (b-2*t)*(h-2*t)**3) / 12     # bending about axis with depth h
+    I_hb = (h*b**3 - (h-2*t)*(b-2*t)**3) / 12     # bending about axis with depth b
+    return A, max(I_bh, I_hb), min(I_bh, I_hb)
 
 @register("SHS")
 def shs(row):
@@ -36,6 +43,10 @@ def i_section(row):
     Sharp corners (root radii neglected -> conservative for classification).
     Uses separate flange/web thicknesses t_f, t_w when the columns are present,
     otherwise falls back to the single 't' (e.g. equal-thickness welded I).
+
+    I_major / I_minor are assigned by magnitude (max/min) for the same robustness
+    reason as rhs(): a standard I has h > b so the strong axis is (b*h^3)/12, but
+    the max/min guard removes any reliance on that holding for every future row.
     """
     b, h, t = row["b"], row["h"], row["t"]
     t_f = row.get("t_f", t); t_w = row.get("t_w", t)
@@ -43,9 +54,9 @@ def i_section(row):
     if pd.isna(t_w): t_w = t
 
     A = 2*b*t_f + (h - 2*t_f)*t_w
-    I_major = (b*h**3 - (b - t_w)*(h - 2*t_f)**3) / 12     # strong axis (y-y)
-    I_minor = (2*t_f*b**3 + (h - 2*t_f)*t_w**3) / 12       # weak axis (z-z)
-    return A, I_major, I_minor
+    I_strong = (b*h**3 - (b - t_w)*(h - 2*t_f)**3) / 12     # about axis with depth h (y-y)
+    I_weak   = (2*t_f*b**3 + (h - 2*t_f)*t_w**3) / 12       # about axis with depth b (z-z)
+    return A, max(I_strong, I_weak), min(I_strong, I_weak)
 
 @register("H")
 def h_section(row):
