@@ -1,12 +1,13 @@
+% !TEX root = main.tex
 \documentclass[a4paper,11pt,oneside]{report}
 
+% --- Preamble Configuration ---
 \input{preamble}
 
+% --- Bibliography Setup ---
 \addbibresource{bibliography/references.bib}
 
-\title{Developing design formulae for flexural buckling of stainless steel columns using machine 
-learning techniques}
-
+\title{Developing design formulae for flexural buckling of stainless steel columns using machine learning techniques}
 \author{Iker Decimavilla Garrido}
 \date{\today}
 
@@ -31,14 +32,15 @@ learning techniques}
 \include{chapters/02_literature_review}
 \include{chapters/03_methodology}
 \include{chapters/04_dataset}
-\include{chapters/05_stage1_ml}
-\include{chapters/06_stage2_symbolic}
+\include{chapters/05_stage1}
+\include{chapters/06_stage2}
 \include{chapters/07_results}
 \include{chapters/08_discussion}
 \include{chapters/09_conclusion}
 
 % ---------------- Back matter ----------------
-\printbibliography
+\clearpage
+\printbibliography[heading=bibintoc]
 
 % \appendix
 % \include{appendices/appendix_name}

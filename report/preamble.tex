@@ -1,2 +1,79 @@
-% !TEX root = main.tex
+% =====================================================================
+%  preamble.tex — packages, layout, and custom commands
+% =====================================================================
+
+% --- Page layout ---
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Fonts / encoding ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% --- Maths & units ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}              % \SI{}{} for engineering units
+\sisetup{detect-all}
+
+% --- Tables & figures ---
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+% --- Bibliography (biblatex + biber) — Harvard / author-date ---
+% Format lives HERE, not in the .bib file. The .bib carries only raw data.
+\usepackage[backend=biber,
+            style=authoryear,   % Harvard family: in-text (Author, Year)
+            sorting=nyt,         % reference list: name, year, title (alphabetical)
+            maxcitenames=3,      % 4+ authors -> "et al." (Cite Them Right rule)
+            mincitenames=1,
+            maxbibnames=99,      % list ALL authors in the reference list
+            uniquename=false,
+            uniquelist=false,
+            dashed=false,        % repeat author names, don't replace with a dash
+            giveninits=true,     % initials, not full first names
+            natbib=true]{biblatex}
+
+% --- Cite Them Right / Imperial Harvard punctuation tweaks ---
+\renewcommand*{\nameyeardelim}{\addcomma\space} % "Author, Year" in text
+\DeclareNameAlias{sortname}{family-given}       % reference list: "Surname, F."
+\DeclareFieldFormat[article]{title}{#1}         % article titles: no quotes
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat{url}{Available at\addcolon\space\url{#1}} % "Available at: ..."
+\DeclareFieldFormat{urldate}{(Accessed\addcolon\space#1)}     % "(Accessed: date)"
+
+% --- Cross-referencing / hyperlinks ---
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+}
+
+% --- Headers/footers ---
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- Code listings (if needed for pipeline snippets) ---
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+}
 
