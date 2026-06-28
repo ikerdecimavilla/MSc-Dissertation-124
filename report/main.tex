@@ -1,0 +1,46 @@
+\documentclass[a4paper,11pt,oneside]{report}
+
+\input{preamble}
+
+\addbibresource{bibliography/references.bib}
+
+\title{Developing design formulae for flexural buckling of stainless steel columns using machine 
+learning techniques}
+
+\author{Iker Decimavilla Garrido}
+\date{\today}
+
+\begin{document}
+
+% ---------------- Front matter ----------------
+\pagenumbering{roman}
+\input{frontmatter/titlepage}
+\input{frontmatter/abstract}
+\input{frontmatter/acknowledgements}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\input{frontmatter/nomenclature}
+
+\clearpage
+\pagenumbering{arabic}
+
+% ---------------- Chapters ----------------
+\include{chapters/01_introduction}
+\include{chapters/02_literature_review}
+\include{chapters/03_methodology}
+\include{chapters/04_dataset}
+\include{chapters/05_stage1_ml}
+\include{chapters/06_stage2_symbolic}
+\include{chapters/07_results}
+\include{chapters/08_discussion}
+\include{chapters/09_conclusion}
+
+% ---------------- Back matter ----------------
+\printbibliography
+
+% \appendix
+% \include{appendices/appendix_name}
+
+\end{document}
