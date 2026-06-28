@@ -26,17 +26,16 @@
 \usepackage{float}
 
 % --- Bibliography (biblatex + biber) — Harvard / author-date ---
-% Format lives HERE, not in the .bib file. The .bib carries only raw data.
 \usepackage[backend=biber,
-            style=authoryear,   % Harvard family: in-text (Author, Year)
-            sorting=nyt,         % reference list: name, year, title (alphabetical)
-            maxcitenames=3,      % 4+ authors -> "et al." (Cite Them Right rule)
+            style=authoryear,   
+            sorting=nyt,         
+            maxcitenames=3,      
             mincitenames=1,
-            maxbibnames=99,      % list ALL authors in the reference list
+            maxbibnames=99,      
             uniquename=false,
             uniquelist=false,
-            dashed=false,        % repeat author names, don't replace with a dash
-            giveninits=true,     % initials, not full first names
+            dashed=false,        
+            giveninits=true,     
             natbib=true]{biblatex}
 
 % --- Cite Them Right / Imperial Harvard punctuation tweaks ---
