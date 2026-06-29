@@ -9,6 +9,7 @@ dependencies:
   - matplotlib
   - jupyter
   - nbformat
+  - os
   # add here as you adopt them, e.g. xgboost, lightgbm
   - pip
   - pip:

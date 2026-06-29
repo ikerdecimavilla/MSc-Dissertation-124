@@ -11,13 +11,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{microtype}            % subtle kerning/justification; fewer overfull lines
+\usepackage{microtype} % subtle kerning/justification; fewer overfull lines
 
 % --- Maths & units ---
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{siunitx}              
-\sisetup{detect-all}
+\sisetup{mode = match, propagate-math-font = true}
 
 % --- Tables & figures ---
 \usepackage{graphicx}
@@ -28,7 +28,7 @@
 \usepackage{float}
 
 % --- Bibliography (biblatex + biber) — Harvard / author-date ---
-\usepackage{csquotes}             % recommended by biblatex; load BEFORE biblatex
+\usepackage{csquotes} % recommended by biblatex; load BEFORE biblatex
 \usepackage[backend=biber,
             style=authoryear,   
             sorting=nyt,         
@@ -49,30 +49,13 @@
 \DeclareFieldFormat{url}{Available at\addcolon\space\url{#1}} % "Available at: ..."
 \DeclareFieldFormat{urldate}{(Accessed\addcolon\space#1)}     % "(Accessed: date)"
 
-% --- Cross-referencing / hyperlinks ---
-\usepackage{hyperref}
-\usepackage{bookmark}             % clean PDF bookmarks in one pass (after hyperref)
-\usepackage{cleveref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    citecolor=black,
-    urlcolor=blue,
-}
-
-% --- Headers/footers ---
-% Match reference report: no running header, page number centred at the foot.
-\pagestyle{plain}
-
 % --- Compact chapter headings ---
 \usepackage{titlesec}
-% Chapter heading as "1  Introduction" (number + title on one line), matching
-% the numbered subheadings 1.1, 1.1.1 — not the two-line "Chapter 1 / Title".
 \titleformat{\chapter}[hang]
   {\normalfont\huge\bfseries}{\thechapter}{1em}{}
 \titlespacing*{\chapter}{0pt}{0pt}{2.5ex}
 
-% --- Code listings (if needed for pipeline snippets) ---
+% --- Code listings ---
 \usepackage{listings}
 \usepackage{xcolor}
 \lstset{
@@ -83,3 +66,17 @@
     numberstyle=\tiny,
 }
 
+% --- Cross-referencing / hyperlinks (MUST BE LOADED AT THE VERY END) ---
+\usepackage{hyperref}
+\usepackage{bookmark} % clean PDF bookmarks in one pass
+\usepackage{cleveref} % MUST be loaded after hyperref
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue,
+}
+
+% --- Headers/footers ---
+\pagestyle{plain}
