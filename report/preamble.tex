@@ -13,11 +13,17 @@
 \usepackage{lmodern}
 \usepackage{microtype} % subtle kerning/justification; fewer overfull lines
 
+% --- Comments ---
+\usepackage{comment}
+
 % --- Maths & units ---
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{siunitx}              
 \sisetup{mode = match, propagate-math-font = true}
+
+% --- Custom math commands ---
+\newcommand{\lambdabar}{\bar{\lambda}}   % normalised (non-dimensional) slenderness
 
 % --- Tables & figures ---
 \usepackage{graphicx}
@@ -77,6 +83,14 @@
     citecolor=black,
     urlcolor=blue,
 }
+
+% Reference names: always "Figure 2.1", "Table 2.1", "Eq. (2.1)"
+\crefname{figure}{Figure}{Figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\Crefname{table}{Table}{Tables}
+\crefname{equation}{Eq.}{Eqs.}
+\Crefname{equation}{Equation}{Equations}
 
 % --- Headers/footers ---
 \pagestyle{plain}
