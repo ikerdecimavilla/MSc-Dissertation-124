@@ -1,0 +1,229 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{afshan2013}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6a30bdbfe2119a40787b9a7b9a444679}{%
+           family={Afshan},
+           familyi={A\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=9b60b2f12cf56e9461e2521988072e9c}{%
+           family={Gardner},
+           familyi={G\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f7ed247ded4d4c589ee970781cdf457}
+      \strng{fullhash}{7f7ed247ded4d4c589ee970781cdf457}
+      \strng{fullhashraw}{7f7ed247ded4d4c589ee970781cdf457}
+      \strng{bibnamehash}{7f7ed247ded4d4c589ee970781cdf457}
+      \strng{authorbibnamehash}{7f7ed247ded4d4c589ee970781cdf457}
+      \strng{authornamehash}{7f7ed247ded4d4c589ee970781cdf457}
+      \strng{authorfullhash}{7f7ed247ded4d4c589ee970781cdf457}
+      \strng{authorfullhashraw}{7f7ed247ded4d4c589ee970781cdf457}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Stainless steel is gaining increasing use in construction because of its durability, favorable mechanical properties, and aesthetic appearance, with the austenitic grades being the most commonly used. Austenitic stainless steels have a high nickel content (8–11\%), resulting in high initial material cost and significant price fluctuations; this, despite its desirable properties, represents a considerable disadvantage in terms of material selection. Ferritic stainless steels, having no or very low nickel content, may offer a more viable alternative for structural applications, reducing both the level and variability of the initial material cost while maintaining adequate corrosion resistance. There is currently limited information available on the structural performance of this type of stainless steel. Therefore, to overcome this limitation, a series of material, cross section, and member tests have been performed, covering both the standard EN 1.4003 grade (similar to the chromium weldable structural steel 3Cr12) and the EN 1.4509 grade (441), which has improved weldability and corrosion resistance. In total, 20 tensile coupon tests, 16 compressive coupon tests, eight stub column tests, 15 flexural buckling tests, and eight in-plane bending tests were carried out. Precise measurements of the geometric properties of the test specimens, including the local and global geometric imperfections, were also made. The experimental results are used to assess the applicability of the current European (EN 1993-1-4) and North American (SEI/ASCE-8) provisions to ferritic stainless steel structural components. In addition, the relative structural performance of ferritic stainless steel to that of more commonly used stainless steel grades is also presented, showing ferritic stainless steel to be an attractive choice for structural applications. DOI: 10.1061/(ASCE)ST.1943-541X.0000580. © 2013 American Society of Civil Engineers.}
+      \field{issn}{0733-9445, 1943-541X}
+      \field{journaltitle}{Journal of Structural Engineering}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{number}{5}
+      \field{shortjournal}{J. Struct. Eng.}
+      \field{title}{Experimental {{Study}} of {{Cold-Formed Ferritic Stainless Steel Hollow Sections}}}
+      \field{urlday}{13}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{volume}{139}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{717\bibrangedash 728}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1061/(ASCE)ST.1943-541X.0000580
+      \endverb
+      \verb{file}
+      \verb C:\Users\ikerd\Zotero\storage\A4JCVYQC\Afshan and Gardner - 2013 - Experimental Study of Cold-Formed Ferritic Stainless Steel Hollow Sections.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://ascelibrary.org/doi/10.1061/%28ASCE%29ST.1943-541X.0000580
+      \endverb
+      \verb{url}
+      \verb https://ascelibrary.org/doi/10.1061/%28ASCE%29ST.1943-541X.0000580
+      \endverb
+    \endentry
+    \entry{gardner2004}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=9b60b2f12cf56e9461e2521988072e9c}{%
+           family={Gardner},
+           familyi={G\bibinitperiod},
+           given={L},
+           giveni={L\bibinitperiod}}}%
+        {{hash=f03c3b7812de623f847011cb01da52a8}{%
+           family={Nethercot},
+           familyi={N\bibinitperiod},
+           given={D.A},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{96c51496db0ac29888e9b9a32a624f8a}
+      \strng{fullhash}{96c51496db0ac29888e9b9a32a624f8a}
+      \strng{fullhashraw}{96c51496db0ac29888e9b9a32a624f8a}
+      \strng{bibnamehash}{96c51496db0ac29888e9b9a32a624f8a}
+      \strng{authorbibnamehash}{96c51496db0ac29888e9b9a32a624f8a}
+      \strng{authornamehash}{96c51496db0ac29888e9b9a32a624f8a}
+      \strng{authorfullhash}{96c51496db0ac29888e9b9a32a624f8a}
+      \strng{authorfullhashraw}{96c51496db0ac29888e9b9a32a624f8a}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{A series of tests were performed on cold-formed austenitic stainless steel square, rectangular and circular hollow section (SHS, RHS and CHS, respectively) members. Twenty-two flexural buckling tests and nine 3-point bending tests were carried out. Measurements were taken of cross-section geometry, local and global initial geometric imperfections and material properties in tension and compression. Results from the tests, including full load–deformation histories are presented; these have served as a basis for calibration of numerical models and for the development and verification of a new approach to structural stainless steel design. The test results represent a major contribution to the pool of available test data for stainless steel structures. Combining these data with all previously available test results for stainless steel hollow section columns and beams in a comparison against strengths predicted by Eurocode 3: Part 1.4 shows, on average, that the Eurocode method is overly conservative.}
+      \field{issn}{0143974X}
+      \field{journaltitle}{Journal of Constructional Steel Research}
+      \field{langid}{english}
+      \field{month}{9}
+      \field{number}{9}
+      \field{shortjournal}{Journal of Constructional Steel Research}
+      \field{shorttitle}{Experiments on Stainless Steel Hollow Sections—{{Part}} 2}
+      \field{title}{Experiments on Stainless Steel Hollow Sections—{{Part}} 2: {{Member}} Behaviour of Columns and Beams}
+      \field{urlday}{18}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{volume}{60}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1319\bibrangedash 1332}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1016/j.jcsr.2003.11.007
+      \endverb
+      \verb{file}
+      \verb C:\Users\ikerd\Zotero\storage\UHPTWTY3\Gardner and Nethercot - 2004 - Experiments on stainless steel hollow sections—Part 2 Member behaviour of columns and beams.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S0143974X03002165
+      \endverb
+      \verb{url}
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S0143974X03002165
+      \endverb
+    \endentry
+    \entry{timoshenko2009}{book}{}{}
+      \name{editor}{2}{}{%
+        {{hash=c60b47aede681929218f40327dffaf0a}{%
+           family={Timoshenko},
+           familyi={T\bibinitperiod},
+           given={Stephen\bibnamedelima P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=335c2bc6147838dd4c1c989f7f916aa7}{%
+           family={Gere},
+           familyi={G\bibinitperiod},
+           given={James\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Mineola, N.Y}%
+      }
+      \list{publisher}{1}{%
+        {Dover Publications}%
+      }
+      \strng{namehash}{db451e28bc4b2aac569156c4b1cf0440}
+      \strng{fullhash}{db451e28bc4b2aac569156c4b1cf0440}
+      \strng{fullhashraw}{db451e28bc4b2aac569156c4b1cf0440}
+      \strng{bibnamehash}{db451e28bc4b2aac569156c4b1cf0440}
+      \strng{editorbibnamehash}{db451e28bc4b2aac569156c4b1cf0440}
+      \strng{editornamehash}{db451e28bc4b2aac569156c4b1cf0440}
+      \strng{editorfullhash}{db451e28bc4b2aac569156c4b1cf0440}
+      \strng{editorfullhashraw}{db451e28bc4b2aac569156c4b1cf0440}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The best available guide to the elastic stability of large structures, this volume was co-authored by world-renowned authorities on engineering mechanics. It ranges from theoretical explanations of 2- and 3-D stress and strain to practical applications such as torsion, bending, thermal stress, and wave propagation through solids. Equally valuable as text or reference. 1961 edition}
+      \field{edition}{2nd ed., Dover ed}
+      \field{isbn}{978-1-62198-613-3 978-0-486-13480-2}
+      \field{langid}{english}
+      \field{pagetotal}{541}
+      \field{series}{A {{McGraw-Hill}} Classic Textbook Reissue}
+      \field{title}{Theory of Elastic Stability}
+      \field{year}{2009}
+      \field{dateera}{ce}
+    \endentry
+    \entry{trahair2008}{book}{}{}
+      \name{editor}{1}{}{%
+        {{hash=021d9b580fa15d1807f512f736921803}{%
+           family={Trahair},
+           familyi={T\bibinitperiod},
+           given={N.\bibnamedelimi S.},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {London}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{021d9b580fa15d1807f512f736921803}
+      \strng{fullhash}{021d9b580fa15d1807f512f736921803}
+      \strng{fullhashraw}{021d9b580fa15d1807f512f736921803}
+      \strng{bibnamehash}{021d9b580fa15d1807f512f736921803}
+      \strng{editorbibnamehash}{021d9b580fa15d1807f512f736921803}
+      \strng{editornamehash}{021d9b580fa15d1807f512f736921803}
+      \strng{editorfullhash}{021d9b580fa15d1807f512f736921803}
+      \strng{editorfullhashraw}{021d9b580fa15d1807f512f736921803}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{abstract}{chapter 1 Introduction -- chapter 2 Tension members -- chapter 3 Compression members -- chapter 4 Local buckling of thin-plate elements -- chapter 5 In-plane bending of beams -- chapter 6 Lateral buckling of beams -- chapter 7 Beam-columns -- chapter 8 Frames -- chapter 9 Joints -- chapter 10 Torsion members}
+      \field{edition}{Fourth edition}
+      \field{isbn}{978-1-315-27351-8}
+      \field{langid}{english}
+      \field{pagetotal}{1}
+      \field{title}{The Behaviour and Design of Steel Structures to {{EC3}}}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.1201/9781315273518
+      \endverb
+      \verb{urlraw}
+      \verb https://www.taylorfrancis.com/books/9781315273518
+      \endverb
+      \verb{url}
+      \verb https://www.taylorfrancis.com/books/9781315273518
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
