@@ -44,10 +44,17 @@ def add_features(df):
     out["lambda_bar"] = np.sqrt(out["N_y"] / out["N_cr"])
 
     # 9. Experimental strength reduction factor
-    out["chi"] = out["N_u"] / out["N_y"]
+    out["chi_exp"] = out["N_u"] / out["N_y"]
 
     # 10. Total effective global imperfection (non-negative magnitude)
     out["w_total"] = _total_imperfection(out)
+    
+    # 11. Normalised geometric imperfection magnitude
+    out["w_0_norm"] = np.abs(out["w_0"] / out["L"])
+    
+    # 12. Normalised loading eccentricity magnitude
+    out["w_e_norm"] = np.abs(out["w_e"] / out["L"])
+    
 
     return out
 

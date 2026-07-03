@@ -22,9 +22,9 @@ where $E$ is Young's modulus, $I$ is the second moment of area and $L$ is the me
 %
 As illustrated in \cref{fig:chi-lambdabar-baseline}, the theoretical maximum strength of a perfect column forms a sharp $\chi$--$\lambdabar$ baseline: a pure squashing plateau ($\chi = 1$) for stocky columns and an elastic Euler hyperbola ($\chi = \lambdabar^{-2}$) for slender columns, the two regimes meeting at $\lambdabar = 1$ \parencite{trahair2008}.
 
-\begin{figure}[htbp]
+\begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/chi-lambdabar-baseline.pdf}
+  \includegraphics[width=0.75\textwidth]{figures/chi-lambdabar-baseline.pdf}
   \caption[Idealised column strength baseline]{%
     Buckling reduction factor $\chi$ against normalised slenderness $\lambdabar$
     for a perfect, elastic--perfectly plastic column: the lower envelope of the
@@ -32,6 +32,11 @@ As illustrated in \cref{fig:chi-lambdabar-baseline}, the theoretical maximum str
     which meet at $\lambdabar = 1$.}
   \label{fig:chi-lambdabar-baseline}
 \end{figure}
+
+Real columns, however, never reach the perfect baseline because they carry imperfections such as initial crookedness, residual stresses, and load eccentricities. As a result, failure is observed below the theoretical bounds described, particularly at intermediate slenderness ($\lambdabar \approx 0.7\text{--}1.5$) where instability and yielding interact.
+
+
+
 
 \begin{comment}
 
@@ -52,6 +57,7 @@ Paragraph 4 --> bounding scope
 3. Give reason for exclusion
 
 \subsection{The Ramberg--Osgood constitutive law for non-linear materials}
+\label{sec:ramberg-osgood}
 
 Paragraph 1 --> why stainless steel differs from carbon steel
 1. carbon steel is conventionally idealised as linear-elastic, perfectly-plastic, with a sharp, well-defined yield point and a yield plateau.

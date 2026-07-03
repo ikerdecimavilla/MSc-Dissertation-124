@@ -1,3 +1,83 @@
 % !TEX root = ../../main.tex
 
 \section{Machine learning for strength prediction in structural members}
+
+\subsection{The shift towards machine learning in structural stability}
+\label{sec:ml-shift}
+
+A growing body of work demonstrates that data-driven models can match or outperform structural capacity predictions provided in stainless steel design codes. Notably, \textcite{xu2021a} compared seven algorithms for predicting the capacity of cold-formed stainless steel tubular columns and found tree-ensemble methods to be the most accurate: the random forest achieved a mean predicted-to-test capacity ratio of $1.01\;(\mathrm{COV}\approx 0.08)$, against a mean of $0.89$ for the Eurocode method. Similar findings have been reported across member types. For circular hollow section stub columns, the EC3 resistance was found to be substantially conservative, underpredicting test capacities by roughly $30\%$, whereas the best machine-learning model reproduced them almost exactly (mean ratio $1.00$) \parencite{abarkan2024}. Equally, for concrete-filled stainless steel tubes, \textcite{tran2023} found a gradient-boosting model which reduced a similar underprediction to a mean ratio of about $1.04$. These findings echo the limitation established in \Cref{sec:codes-empirical}: flexible, data-driven models capture the non-linear material and geometric response more faithfully than expressions built on fixed, pre-calibrated constants.
+
+This study aims to draw on these developments for a more specific purpose than direct strength prediction. The aim is to extend the correction factor of \Cref{sec:kgw-beta} from a univariate function of $\lambdabar$ into one that reflects the physical drivers identified in \cref{sec:imperfection-drivers}. Instead of assuming a fixed functional form, the model learns the relationship between the chosen descriptors and the observed strength directly from the experimental data. The interpretability tools introduced later in this section then show which descriptors genuinely carry predictive value. In this sense, machine learning is used to inform an extended, mechanically grounded correction factor, not to replace the formulation in \Cref{sec:kgw} with a black-box predictor.
+
+Given the scarcity of experimental stability data for stainless steel and its specific tabular, heterogeneous format, the stated goal must be pursued within a strict data regime. The model choice and the manner in which data are partitioned for validation are two important considerations, which are explored in the following subsections.
+
+\subsection{Evaluation of model architecture for small tabular datasets}
+\label{sec:ml-architectures}
+
+Experimental data on member stability, particularly for stainless steel, have a particular structure that dictates model choice. Every datum is the product of a physical test taken to failure; consequently, independent studies typically comprise only a handful of experimental tests, which are later used to augment and validate a much larger dataset via finite-element (FE) simulations (e.g., \parencite{buchanan2018,yuan2015,sun2020}). The resulting data are tabular and heterogeneous, mixing continuous quantities such as material parameters and geometry with categorical descriptors such as fabrication route and cross-section type. A broad range of algorithms have been applied to problems of this kind, but three recur as the dominant choices for structural capacity prediction: artificial neural networks, support vector regression, and tree ensembles.
+
+An artificial neural network (ANN), in its common multi-layer perceptron form, maps inputs to outputs through successive layers of interconnected nodes, each applying a weighted sum followed by a non-linear activation, with the weights fitted by gradient descent \parencite{goodfellow2016}. Support vector regression (SVR) instead maps the inputs into a higher-dimensional space through a kernel function and fits a regression surface within a fixed error tolerance, its complexity governed by regularisation \parencite{smola2004}. These two architectures are contrasted schematically in \cref{fig:ann-svr}. The primary advantage of both, and the reason they have been applied so widely and successfully to structural capacity prediction, lies in their ability to map complex, high-dimensional interactions without requiring a predefined mathematical form \parencite{thai2022}. This flexibility is particularly valuable when predicting flexural buckling, as it allows the algorithms to organically capture the deeply coupled effects of geometric imperfections and continuous strain-hardening material behaviour.
+
+\begin{figure}[tbp]
+  \centering
+  \resizebox{\textwidth}{!}{\input{figures/fig_ann_svr}}
+  \caption[Neural network and support vector regression schematics]{The two
+    flexible, high-capacity architectures most widely applied to structural
+    capacity prediction. (a) A multi-layer perceptron maps inputs through
+    hidden layers of weighted sums and non-linear activations. (b) Support
+    vector regression fits a function within an $\varepsilon$-insensitive tube,
+    determined by a subset of support vectors.}
+  \label{fig:ann-svr}
+\end{figure}
+
+However, their suitability weakens significantly outside the large-data regime. The high predictive accuracy of deep learning models in structural engineering is overwhelmingly reliant on massive synthetic datasets, typically generated through extensive FE studies rather than physical testing \parencite{thai2022}. When constrained to small, purely experimental datasets, these models become unreliable. ANNs, which carry a vast number of free parameters, tend to overfit sparse data and consequently overlook the underlying physical mechanics \parencite{goodfellow2016,brigato2020}. Conversely, the generalisation capability of SVR is particularly sensitive to the choice of kernel and its hyperparameter tuning \parencite{hastie2009}.
+
+This instability has been observed on experimental stainless steel data. In a study by \textcite{xu2021a}, which aimed to establish a unified capacity prediction method for 322 cold-formed stainless steel tubular columns, both the ANN and the SVR were reported as highly sensitive to parameter tuning and unstable in accuracy. The SVR, in particular, deteriorated sharply from training to testing, with its predicted-to-test scatter rising roughly fivefold, while the neural network was deliberately kept small precisely because the sample was too limited to support a larger one.
+
+Tree-ensemble methods inherently bypass the limitations of deep networks and kernel methods on small tabular datasets. By partitioning the feature space with simple, axis-aligned splits, decision trees can capture non-linear response surfaces without extensive hyperparameter tuning or feature scaling \parencite{grinsztajn2022}. These ensembles fall into two primary families, illustrated schematically in \cref{fig:bagging-boosting}. Bagging methods, such as random forests, grow many trees independently on bootstrap resamples of the training data and average their predictions, reducing \emph{variance} through decorrelation \parencite{breiman2001}. Boosting methods, such as gradient boosting, grow trees sequentially, each fitted to the residual error of the current ensemble, reducing \emph{bias} through successive correction \parencite{friedman2001}. Modern gradient-boosting implementations further introduce internal regularisation, highly efficient split-finding algorithms, and native categorical handling \parencite{chen2016,ke2017,prokhorenkova2019}.
+
+\begin{figure}[tbp]
+  \centering
+  \resizebox{\textwidth}{!}{\input{figures/fig_bagging_boosting}}
+  \caption[Bagging versus boosting ensemble strategies]{The two tree-ensemble
+    families. Bagging grows trees in parallel on independent bootstrap resamples
+    and averages them, reducing variance; boosting grows trees sequentially,
+    each fitted to the residuals of the current ensemble, reducing bias.}
+  \label{fig:bagging-boosting}
+\end{figure}
+
+Empirical evidence strongly favours tree ensembles for structural capacity prediction on limited datasets. In the previously mentioned study by \textcite{xu2021a}, random forest and XGBoost significantly outperformed ANNs and SVRs, rectifying conservative Eurocode predictions, which systematically underestimated capacity with a mean predicted-to-test ratio of $0.89$. A subsequent study of 280 circular hollow section (CHS) columns corroborated these findings, with the random forest achieving a highly accurate mean ratio of $1.00$ and a standard deviation of $0.083$ \parencite{xu2021b}. This pattern is consistent across adjacent structural problems: gradient boosting outperformed ANNs and tuned SVRs for concrete-filled tubes \parencite{megahed2023}, and CatBoost yielded the highest accuracy on a sparse dataset of 252 gusset-plate connections by exploiting its native categorical treatment \parencite{rahman2024}. These domain-specific results align precisely with the broader machine learning consensus: tree ensembles remain the state-of-the-art architectures for small-to-medium tabular data, whereas neural networks demand substantially larger samples to achieve parity \parencite{grinsztajn2022,shwartzziv2021}.
+
+On this basis, the tree-ensemble family is adopted for Stage~1 of this study. The three leading gradient-boosting implementations---XGBoost, LightGBM, and CatBoost---are deployed as the primary architectures due to their robust internal regularisation and bias-reducing mechanics. CatBoost is particularly valuable here, as its native categorical handling prevents dimensional inflation when incorporating non-continuous features such as fabrication route and section type. The random forest is retained as a robust benchmark given its proven efficacy in comparable stainless steel studies, and all candidates are compared under the grouped cross-validation scheme detailed in \cref{sec:ml-validation}. Crucially, the ultimate aim is not to supplant the established mechanics-based formulations of \cref{sec:kgw}, but rather to harness the ensemble's predictive accuracy to distil a physically meaningful correction factor.
+
+\subsection{Cross-validation for small, grouped datasets}
+\label{sec:ml-validation}
+
+\begin{comment}
+
+2.5.3 Cross-Validation Strategies: Preventing Batch-Level Data Leakage
+Unchanged — this section was already correct and matches your established methodological position.
+
+The problem of data leakage: experimental structural data is rarely independent — specimens cut from the same batch share unmeasured residual stress profiles, material properties, and machine-specific imperfections.
+The flaw of random K-fold: standard randomised K-fold distributes these correlated "sibling" specimens across training and test folds, letting the model memorise batch-specific noise rather than learn generalisable mechanics — producing an optimistic, deceptive validation score.
+The grouped solution: introduce GroupKFold / leave-one-study-out, enforcing that all specimens from one research campaign stay together in a single fold, forcing genuine generalisation across studies. Present this as a methodological design decision grounded in the general grouped-cross-validation literature — not as a critique of any specific prior work.
+
+2.5.4 Explainable AI: SHAP and the Stage 1 -> Stage 2 Handoff
+
+Goal: narrow this subsection specifically to SHAP and its role in selecting features for Stage 2 — the physics-informed/symbolic-regression material moves out to its own section.
+
+The necessity of explainability: state that statistical accuracy alone is insufficient for infrastructure-relevant predictions — models must be interpretable enough that engineers can verify they respect basic mechanics (e.g. capacity decreasing with slenderness).
+SHAP: explain how Shapley values quantify each input feature's marginal contribution, both globally (overall feature importance) and locally (per-specimen), and how this recovers the direction and relative weight of physical effects from a black-box ensemble.
+The handoff: close by stating SHAP's specific role in your pipeline — it is not the end point, but the mechanism that selects which physical variables (from the imperfection drivers established in 2.4) are passed forward as candidate inputs to the multivariate beta discovery in Stage 2.
+
+2.6 Towards an Interpretable, Closed-Form Correction Factor (Stage 2 bridge) — new section, split out of the old 2.5.4
+Goal: give symbolic regression a real, named presence rather than leaving it implied by a generic "physics-informed input" idea.
+
+Introduce the broader concept Stage 1 alone cannot deliver: a black-box ensemble can predict strength accurately but cannot hand back a usable design equation.
+Present the "physics-informed residual corrector" idea — using an established analytical baseline (KGW's formula) as the backbone, with ML used only to model the residual — and name symbolic regression, specifically PySR, as your chosen instantiation of this idea, in contrast to both pure black-box prediction and physics-informed neural networks (PINNs).
+Argue for the closed-form route on the grounds that it can be constrained to obey known physical bounds (beta <= 1, beta -> 1 at slenderness extremes, monotonicity with imperfection magnitude) and slots back into KGW's formula as a direct replacement for the univariate beta — something no black-box predictor, however accurate, can offer.
+End on the explicit research-gap statement that closes Chapter 2.
+
+\end{comment}
+
+\endinput

@@ -10,6 +10,10 @@ dependencies:
   - jupyter
   - nbformat
   - os
+  - seaborn
+  - __future__
+  - scipy.optimize
+  - pathlib
   # add here as you adopt them, e.g. xgboost, lightgbm
   - pip
   - pip:

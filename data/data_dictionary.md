@@ -102,7 +102,7 @@ These columns are derived from the mandatory raw inputs. They are never entered 
 | `N_cr` | Computed | float | kN | (pi^2 * E0 * I_crit) / Le^2 | Euler elastic critical buckling load. |
 | `N_y` | Computed | float | kN | A * sigma_02 | Squash (yield) load of the gross cross-section. |
 | `lambda_bar` | Computed | float | — | sqrt(N_y / N_cr); equivalently (Le / (pi * R)) * sqrt(sigma_02 / E0) | Non-dimensional slenderness per Köllner, Gardner & Wadee (2023). The two formulae are asserted equal at build time as a unit-error guard. |
-| `chi` | Computed | float | — | N_u / N_y | Experimental strength reduction factor. |
+| `chi_exp` | Computed | float | — | N_u / N_y | Experimental strength reduction factor. |
 | `epsilon` | Computed | float | — | sqrt((235 / sigma_02) * (E0 / 210000)) | Material factor per EN 1993-1-4 Table 5.2. |
 | `cs_slenderness` | Computed | float | — | See EN 1993-1-4 Table 5.2 | Slenderness (c/t for SHS/RHS/I, d/t for CHS) of the **governing** plate, i.e. the plate ranked highest by (class, utilisation). Because the web and flange of an I-section carry different EN limits, the governing plate is selected by utilisation rather than by the largest raw ratio. |
 | `cs_slenderness_norm` | Computed | float | — | (c/t) / (class-3 limit) of the governing plate | Normalised plate utilisation of the governing plate. `> 1` means the plate is past its Class 3 limit (Class 4). Cross-section-agnostic, so directly comparable across section types; preferred over raw `cs_slenderness` as an ML feature. |
@@ -112,6 +112,9 @@ These columns are derived from the mandatory raw inputs. They are never entered 
 | `global_buckling_eligible` | Computed | boolean | — | From `section_class` and `inferred_failure_mode` | `True` for a clean global flexural buckling data point. `False` for any Class 4 section or any row whose inferred mode is `local`, `interactive`, or `unknown`. Use this to filter the Stage 1 / Stage 2 training set, keeping `master.csv` complete rather than deleting rows. Stocky `yielding` (Class 1-3) points are retained. |
 | `failure_mode_conflict` | Computed | boolean | — | From `failure_mode` and `inferred_failure_mode` | `True` where a row reported as `global_flexural` is computed to be pure `local` buckling (stocky Class 4). Flags likely manual-extraction scope-creep mislabels for review. |
 | `w_total` | Computed | float | mm | see Description | Total effective global imperfection, stored as a non-negative magnitude. **Planar sections** (single bending plane): `abs(w_0 + w_e)` — the magnitude of the net midspan offset (bow plus eccentricity, sign-aligned), which avoids the negative totals a raw signed sum produces when the two oppose. **Symmetric sections measured biaxially** (SHS/CHS with the four `w_*_1/2` components present): the resultant of the two orthogonal net offsets, `sqrt((w_0_1 + w_e_1)^2 + (w_0_2 + w_e_2)^2)`, matching the Rasmussen paper's `sqrt((v01-e01)^2 + (v02-e02)^2)`. Required for the Stage 2 ML model to predict β from the actual imperfection state. |
+| `w_0_norm` | Computed | float | mm | — | w_0 / L | Captures member manufacturing straightness - core geometric imperfection |
+| `w_e_norm` | Computed | float | mm | — | w_e / L | Captures experimental testing setup bias|
+
 ---
  
 ## General Notes

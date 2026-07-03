@@ -1,0 +1,71 @@
+% Schematic contrast of an ANN (multi-layer perceptron) and support vector
+% regression. Included via \input inside a figure environment; uses TikZ
+% libraries arrows.meta, positioning, calc (loaded in preamble).
+\begin{tikzpicture}[
+    font=\small,
+    >={Stealth[length=2.2mm,width=1.7mm]},
+    neuron/.style ={draw, circle, minimum size=7mm, inner sep=0pt, thick},
+    inn/.style    ={neuron, fill=black!5},
+    hid/.style    ={neuron, fill=black!12},
+    onode/.style  ={neuron, fill=black!22},
+    conn/.style   ={-, draw=black!30},
+    ax/.style     ={->, semithick, black!70},
+    lbl/.style    ={font=\scriptsize, text=black!70, align=center},
+    panel/.style  ={font=\bfseries}
+]
+
+% =============== (a) Artificial neural network (MLP) ===============
+\begin{scope}
+  \node[inn] (I1) at (0,2.4) {};
+  \node[inn] (I2) at (0,1.2) {};
+  \node[inn] (I3) at (0,0.0) {};
+  \node[hid] (H1) at (2.1,3.0) {};
+  \node[hid] (H2) at (2.1,1.8) {};
+  \node[hid] (H3) at (2.1,0.6) {};
+  \node[hid] (H4) at (2.1,-0.6) {};
+  \node[onode] (O) at (4.2,1.2) {};
+
+  \foreach \i in {1,2,3}
+    \foreach \h in {1,2,3,4}
+      \draw[conn] (I\i) -- (H\h);
+  \foreach \h in {1,2,3,4}
+    \draw[conn] (H\h) -- (O);
+
+  \node[lbl, left=1mm of I1] {$x_1$};
+  \node[lbl, left=1mm of I2] {$x_2$};
+  \node[lbl, left=1mm of I3] {$x_3$};
+  \node[lbl, right=1mm of O] {$\hat{y}$};
+
+  \node[lbl] at (0,-1.4)   {Inputs};
+  \node[lbl] at (2.1,-1.7) {Hidden layer};
+  \node[lbl] at (4.2,-1.4) {Output};
+
+  \node[panel] at (2.1,4.4) {(a) Artificial neural network};
+\end{scope}
+
+% =============== (b) Support vector regression ===============
+\begin{scope}[xshift=8.8cm]
+  \draw[ax] (0,0) -- (5.2,0) node[below left, lbl] {feature};
+  \draw[ax] (0,0) -- (0,3.7) node[above, lbl] {target};
+
+  \draw[very thick, black!80] (0.4,0.7) -- (4.9,3.3) node[right, lbl, black!80] {$f(x)$};
+  \draw[dashed, black!55] (0.4,1.30) -- (4.9,3.90);
+  \draw[dashed, black!55] (0.4,0.10) -- (4.9,2.70);
+
+  \draw[<->, black!70] (1.5,1.16) -- (1.5,1.76);
+  \node[lbl, right=0.5mm] at (1.5,1.46) {$\varepsilon$};
+
+  \foreach \px/\py in {1.0/1.05, 2.0/1.70, 2.6/2.15, 3.5/2.65, 4.3/3.10} {
+    \fill[white] (\px,\py) circle (1.5pt); \draw[black!60] (\px,\py) circle (1.5pt);
+  }
+  \foreach \px/\py in {1.3/1.95, 2.3/1.20, 3.2/3.20, 4.0/2.10} {
+    \fill[black!80] (\px,\py) circle (1.6pt);
+  }
+
+  \node[panel] at (2.6,4.4) {(b) Support vector regression};
+  \fill[black!80] (2.95,0.55) circle (1.6pt);
+  \node[lbl, right=1mm] at (3.05,0.55) {support vectors};
+\end{scope}
+
+\end{tikzpicture}
+\endinput

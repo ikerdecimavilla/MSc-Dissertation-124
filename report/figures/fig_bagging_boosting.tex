@@ -1,0 +1,89 @@
+% Bagging vs. Boosting ensemble schematic.
+% Included via \input inside a figure environment; requires TikZ libraries
+% arrows.meta, calc (loaded in preamble). Draw with no external dependencies.
+\begin{tikzpicture}[
+    font=\small,
+    >={Stealth[length=2.2mm,width=1.7mm]},
+    data/.style ={draw, rounded corners=2pt, fill=black!5,  minimum width=17mm, minimum height=7mm, align=center},
+    pred/.style ={draw, rounded corners=2pt, fill=black!12, minimum width=20mm, minimum height=7mm, align=center},
+    mbox/.style ={draw, rounded corners=2pt, fill=white,    minimum width=16mm, minimum height=6.5mm, align=center, font=\scriptsize},
+    op/.style   ={draw, circle, fill=black!5, minimum size=8mm, inner sep=0pt, font=\scriptsize},
+    arr/.style  ={->, semithick, black!75},
+    title/.style={font=\bfseries\large},
+    note/.style ={font=\scriptsize\itshape, text=black!60, align=center},
+    te/.style   ={semithick, black!65},
+    leaf/.style ={draw, circle, fill=black!70, minimum size=1.5mm, inner sep=0pt}
+]
+
+% --- small decision-tree glyph: #1=shift coord, #2=node prefix ---
+\newcommand{\treeglyph}[2]{%
+  \begin{scope}[shift={#1}]
+    \node[leaf] (#2r)  at (0,0)      {};
+    \node[leaf] (#2a)  at (-0.35,-0.45){};
+    \node[leaf] (#2b)  at (0.35,-0.45) {};
+    \node[leaf] (#2c)  at (-0.6,-0.9)  {};
+    \node[leaf] (#2d)  at (-0.1,-0.9)  {};
+    \draw[te] (#2r)--(#2a) (#2r)--(#2b) (#2a)--(#2c) (#2a)--(#2d);
+  \end{scope}}
+
+% ================= BAGGING (parallel) =================
+\begin{scope}
+  \node[title]           (btitle) at (0,5.1) {Bagging};
+  \node[data]            (bdata)  at (0,4.0) {Training\\data};
+
+  \node[mbox] (bs1) at (-2.6,2.4) {Bootstrap\\sample 1};
+  \node[mbox] (bs2) at (0,2.4)    {Bootstrap\\sample 2};
+  \node[mbox] (bsM) at (2.6,2.4)  {Bootstrap\\sample $M$};
+
+  \draw[arr] (bdata) -- (bs1);
+  \draw[arr] (bdata) -- (bs2);
+  \draw[arr] (bdata) -- (bsM);
+
+  \treeglyph{(-2.6,1.2)}{bt1}
+  \treeglyph{(0,1.2)}{bt2}
+  \treeglyph{(2.6,1.2)}{btM}
+
+  \draw[arr] (bs1) -- (bt1r);
+  \draw[arr] (bs2) -- (bt2r);
+  \draw[arr] (bsM) -- (btMr);
+
+  \node[op]   (bavg)  at (0,-1.4) {avg};
+  \draw[arr] (bt1c) to[out=-90,in=160] (bavg);
+  \draw[arr] (bt2d) -- (bavg);
+  \draw[arr] (btMc) to[out=-90,in=20]  (bavg);
+
+  \node[pred] (bpred) at (0,-2.9) {Prediction};
+  \draw[arr] (bavg) -- (bpred);
+
+  \node[note] at (0,-3.9) {trees grown in parallel, then averaged\\$\Rightarrow$ reduces \emph{variance}};
+\end{scope}
+
+% ================= BOOSTING (sequential) =================
+\begin{scope}[xshift=8.6cm]
+  \node[title]           (ttitle) at (0.3,5.1) {Boosting};
+  \node[data]            (tdata)  at (-0.9,4.0) {Training\\data};
+
+  \node[mbox] (tm1) at (-0.9,2.4)  {Tree 1};
+  \node[mbox] (tm2) at (-0.9,0.7)  {Tree 2};
+  \node[mbox] (tm3) at (-0.9,-1.0) {Tree $M$};
+
+  \draw[arr] (tdata) -- (tm1);
+  \draw[arr] (tm1) -- node[right=1pt, font=\scriptsize, text=black!60] {residuals} (tm2);
+  \draw[arr] (tm2) -- node[right=1pt, font=\scriptsize, text=black!60] {residuals} (tm3);
+  \node[font=\large, text=black!55] at (-0.9,-0.15) {$\vdots$};
+
+  \treeglyph{(1.4,2.55)}{tt1}
+  \treeglyph{(1.4,0.85)}{tt2}
+  \treeglyph{(1.4,-0.85)}{tt3}
+  \draw[arr] (tm1.east) -- (tt1r);
+  \draw[arr] (tm2.east) -- (tt2r);
+  \draw[arr] (tm3.east) -- (tt3r);
+
+  \node[pred] (tpred) at (-0.9,-2.9) {Prediction};
+  \draw[arr] (tm3) -- (tpred);
+
+  \node[note] at (0.3,-3.9) {each tree corrects the previous residual\\$\Rightarrow$ reduces \emph{bias}};
+\end{scope}
+
+\end{tikzpicture}
+\endinput
