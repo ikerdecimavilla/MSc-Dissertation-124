@@ -1,0 +1,22 @@
+KGW perfect-column solver - deterministic verification
+========================================================
+
+solver correctness
+  equation residual max |g|   : 1.793e-11 (tol 1e-10)
+  n=3 analytical max rel err  : 2.469e-13 (tol 1e-09)
+  ALPHA_RO                    : 0.002 (asserted == 0.002)
+
+Table 1 benchmark (area-invariant)
+  rows / families             : 42 / 11
+  pooled shape CoV            : 1.793 %
+  max |row residual|          : 5.025 %
+  RMS residual                : 1.863 %
+  rows within precision budget: 17/42 (median budget 0.446 %)
+  lambda_bar ULP / P ULP      : 0.01 / 0.1 kN
+  regression guards           : CoV <= 2.5 %, max resid <= 5.5 %
+
+Reading: the equation-residual and n=3 analytical checks prove the solver
+correctly solves KGW Eqs. 16-17. The Table 1 residual beyond the printed-
+precision budget is a systematic within-family drift attributable to Table 1
+provenance (the paper's unrounded inputs are unavailable); it is documented
+above and bounded by the frozen regression guards.

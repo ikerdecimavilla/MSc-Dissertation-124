@@ -1,3 +1,15 @@
+"""Geometric and mechanical feature engineering for the master dataset.
+
+Two entry points, split around classify.classify_sections because the
+effective area of Class 4 sections feeds the squash load and hence
+lambda_bar / chi_exp (KGW Eqs. 16-17 basis):
+
+  add_geometry(df)   gross section properties (A, I_major, I_minor)
+  add_mechanics(df)  Le, buckling axis, R, N_cr, N_squash, lambda_bar,
+                     chi_exp, Delta, aspect_ratio, hardening_ratio,
+                     imperfection features
+                     (requires A_eff: run classify.classify_sections first)
+"""
 import numpy as np
 import pandas as pd
 from .sections import SECTION_CALCS
@@ -11,50 +23,65 @@ _ASYMMETRIC = {"RHS", "I", "H"}
 _K_FACTOR = {"pin-pin": 1.0, "fixed-fixed": 0.5, "fixed-pin": 0.7, "fixed-free": 2.0}
 
 
-def add_features(df):
+def add_geometry(df):
+    """Gross cross-section properties from raw dimensions."""
     out = df.copy()
-
-    # 1. Base geometry (A, I_major, I_minor)
     geom = out.apply(_section_props, axis=1, result_type="expand")
     out[["A", "I_major", "I_minor"]] = geom
+    return out
 
-    # 2. Effective length: reported, else derived from L * k(boundary_condition)
+
+def add_mechanics(df):
+    """Member mechanics and ML features on the effective-area basis.
+
+    Squash load (KGW: P_y = A f_y, or A_eff f_y for Class 4). A_eff equals A
+    for Class 1-3 by construction, so a single expression covers both:
+        N_squash = A_eff * sigma_02
+    lambda_bar and chi_exp follow on the same basis (EC3 Class 4 definition
+    lambda_bar = sqrt(A_eff f_y / N_cr); N_cr remains on gross I).
+    """
+    out = df.copy()
+
+    # 1. Effective length: reported, else derived from L * k(boundary_condition)
     out["Le"], out["Le_source"] = _effective_length(out)
 
-    # 3. Buckling axis: reported -> symmetric "-" -> derived minor (+ provenance)
+    # 2. Buckling axis: reported -> symmetric "-" -> derived minor (+ provenance)
     axis_info = out.apply(
         lambda r: _resolve_buckling_axis(r, r["I_major"], r["I_minor"]),
         axis=1, result_type="expand")
     out["buckling_axis"], out["buckling_axis_source"] = axis_info[0], axis_info[1]
     I_crit = np.where(out["buckling_axis"] == "major", out["I_major"], out["I_minor"])
 
-    # 4. Radius of gyration about the buckling axis
+    # 3. Radius of gyration about the buckling axis (gross section)
     out["R"] = np.sqrt(I_crit / out["A"])
 
-    # 5. Standard (dimensional) slenderness
-    out["lambda"] = out["Le"] / out["R"]
-
-    # 6. Euler elastic critical load (kN)
+    # 4. Euler elastic critical load (kN) -- gross section properties
     out["N_cr"] = (np.pi**2 * out["E0"] * I_crit / out["Le"]**2) / 1000
 
-    # 7. Squash (yield) load (kN)
-    out["N_y"] = out["A"] * out["sigma_02"] / 1000
+    # 5. Squash load (kN) on the effective-area basis (A_eff == A for Class 1-3)
+    out["N_squash"] = out["A_eff"] * out["sigma_02"] / 1000
 
-    # 8. Non-dimensional slenderness (ratio — unaffected by the kN scaling)
-    out["lambda_bar"] = np.sqrt(out["N_y"] / out["N_cr"])
+    # 6. Non-dimensional slenderness, KGW / EC3 definition sqrt(N_squash / N_cr)
+    out["lambda_bar"] = np.sqrt(out["N_squash"] / out["N_cr"])
 
-    # 9. Experimental strength reduction factor
-    out["chi_exp"] = out["N_u"] / out["N_y"]
+    # 7. Experimental strength reduction factor on the same basis
+    out["chi_exp"] = out["N_u"] / out["N_squash"]
 
-    # 10. Total effective global imperfection (non-negative magnitude)
+    # 8. Delta = f_y / E: the material ratio governing the transition
+    #    slenderness in KGW (direct model input alongside n and lambda_bar)
+    out["Delta"] = out["sigma_02"] / out["E0"]
+
+    # 9. Cross-section aspect ratio (1.0 for SHS/CHS by construction)
+    out["aspect_ratio"] = _aspect_ratio(out)
+
+    # 10. Strain-hardening capacity (nullable where sigma_u unreported)
+    sigma_u = out.get("sigma_u", pd.Series(np.nan, index=out.index))
+    out["hardening_ratio"] = sigma_u / out["sigma_02"]
+
+    # 11. Total effective global imperfection (non-negative magnitude) and its
+    #     normalised form (Stage-2 beta predictor)
     out["w_total"] = _total_imperfection(out)
-    
-    # 11. Normalised geometric imperfection magnitude
-    out["w_0_norm"] = np.abs(out["w_0"] / out["L"])
-    
-    # 12. Normalised loading eccentricity magnitude
-    out["w_e_norm"] = np.abs(out["w_e"] / out["L"])
-    
+    out["w_total_norm"] = out["w_total"] / out["Le"]
 
     return out
 
@@ -66,6 +93,14 @@ def _section_props(row):
             f"No section calc for {row['section_type']!r} "
             f"(ref_key={row.get('ref_key')})")
     return fn(row)
+
+
+def _aspect_ratio(out):
+    """max(h, b) / min(h, b); 1.0 for CHS (h is null) and inherently for SHS."""
+    b = pd.to_numeric(out["b"], errors="coerce")
+    h = pd.to_numeric(out["h"], errors="coerce")
+    ar = np.maximum(b, h) / np.minimum(b, h)
+    return pd.Series(np.where(h.isna(), 1.0, ar), index=out.index)
 
 
 def _effective_length(out):
